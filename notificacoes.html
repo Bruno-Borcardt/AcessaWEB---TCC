@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notificações Acessíveis</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .notificacao {
+      display: none;
+      background-color: #198754;
+      color: white;
+      padding: 15px 20px;
+      margin-top: 20px;
+      border-radius: 6px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      transition: opacity 0.5s ease-in-out;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .botao-notificacao {
+      font-size: 20px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .visualmente-oculto {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+<button id="toggleSidebar">☰ Menu</button>
+  <div class="main-container">
+    <nav class="sidebar">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tipografia.html">Tipografia e Textos</a></li>
+        <li><a href="tempo.html">Tempo e Interação</a></li>
+        <li><a href="estresse.html">Redução de Estresse</a></li>
+        <li><a href="erros.html">Prevenção de Erros</a></li>
+        <li><a href="seguranca.html">Segurança</a></li>
+        <li><a href="responsivo.html">Design Responsivo</a></li>
+        <li><a href="personalizacao.html">Personalização</a></li>
+        <li><a href="inteligencia.html">Acessibilidade com IA</a></li>
+        <li><a href="leitura.html">Facilitação de Leitura</a></li>
+        <li><a href="gestos.html">Suporte a Gestos</a></li>
+        <li><a href="notificacoes.html" class="active">Notificações</a></li>
+        <li><a href="teclado.html">Navegação por Teclado</a></li>
+        <li><a href="pagamento.html">Pagamentos</a></li>
+        <li><a href="usabilidade.html">Testes de Usabilidade</a></li>
+        <li><a href="servicos.html">Serviços Essenciais</a></li>
+        <li><a href="experiencia.html">Níveis de Experiência</a></li>
+        <li><a href="movimentos.html">Suporte a Movimentos</a></li>
+        <li><a href="controle.html">Controle da Interface</a></li>
+        <li><a href="auditivo.html">Recursos Auditivos</a></li>
+        <li><a href="tecnologia.html">Tecnologia Assistiva</a></li>
+        <li><a href="dispositivos.html">Dispositivos Antigos</a></li>
+        <li><a href="fraudes.html">Proteção Contra Fraudes</a></li>
+        <li><a href="social.html">Engajamento Social</a></li>
+        <li><a href="frameworks.html">Frameworks</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <!-- Seção de Título e Explicação -->
+      <section class="section">
+        <h1>Notificações e Alertas Acessíveis</h1>
+        <p>Notificações devem ser visuais, claras e audíveis para garantir que todos os usuários percebam as mensagens importantes.</p>
+      </section>
+
+      <!-- Exemplo Prático -->
+      <section class="example">
+        <h2>Exemplo: Notificação Visual e por Voz</h2>
+        <button class="botao-notificacao" onclick="mostrarNotificacao()" onkeyup="ativarTeclado(event, this)" tabindex="0">
+          Mostrar Notificação
+        </button>
+        <div id="notificacao" class="notificacao" aria-live="assertive" role="alert">
+          Esta é uma notificação acessível.
+        </div>
+      </section>
+
+      <!-- Código-Fonte -->
+      <section class="code-box">
+        <h2>Código-Fonte Utilizado</h2>
+<pre>
+HTML:
+&lt;button onclick="mostrarNotificacao()"&gt;Mostrar Notificação&lt;/button&gt;
+&lt;div id="notificacao" class="notificacao" aria-live="assertive"&gt;
+  Esta é uma notificação acessível.
+&lt;/div&gt;
+
+JS:
+function mostrarNotificacao() {
+  const el = document.getElementById("notificacao");
+  el.style.display = "block";
+
+  const texto = el.innerText;
+  const voz = new SpeechSynthesisUtterance(texto);
+  window.speechSynthesis.speak(voz);
+
+  setTimeout(() => {
+    el.style.display = "none";
+  }, 4000);
+}
+
+function ativarTeclado(e, el) {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    el.click();
+  }
+}
+</pre>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function mostrarNotificacao() {
+      const el = document.getElementById("notificacao");
+      el.style.display = "block";
+      const texto = el.innerText;
+      const voz = new SpeechSynthesisUtterance(texto);
+      window.speechSynthesis.speak(voz);
+      setTimeout(() => {
+        el.style.display = "none";
+      }, 4000);
+    }
+
+    function ativarTeclado(e, el) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        el.click();
+      }
+    }
+    const toggleSidebarBtn = document.getElementById("toggleSidebar");
+const sidebar = document.querySelector(".sidebar");
+
+if (toggleSidebarBtn && sidebar) {
+  toggleSidebarBtn.addEventListener("click", function () {
+    sidebar.classList.toggle("active");
+  });
+
+  function handleResize() {
+    if (window.innerWidth > 768) {
+      sidebar.classList.remove("active");
+      sidebar.style.left = "0";
+    } else {
+      sidebar.style.left = "";
+    }
+  }
+
+  window.addEventListener("resize", handleResize);
+  window.addEventListener("DOMContentLoaded", handleResize);
+}
+  </script>
+</body>
+</html>

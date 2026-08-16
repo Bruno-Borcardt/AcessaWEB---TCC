@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suporte a Gestos</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #gesto-area {
+      background-color: #f8f9fa;
+      padding: 30px;
+      text-align: center;
+      border: 3px dashed #007BFF;
+      font-weight: bold;
+      margin: 20px 0;
+      border-radius: 8px;
+      cursor: grab;
+      transition: background-color 0.3s ease;
+    }
+
+    #gesto-area:hover {
+      background-color: #e9ecef;
+    }
+
+    #gesto-mensagem {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+<button id="toggleSidebar">☰ Menu</button>
+  <div class="main-container">
+    <nav class="sidebar">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tipografia.html">Tipografia e Textos</a></li>
+        <li><a href="tempo.html">Tempo e Interação</a></li>
+        <li><a href="estresse.html">Redução de Estresse</a></li>
+        <li><a href="erros.html">Prevenção de Erros</a></li>
+        <li><a href="seguranca.html">Segurança</a></li>
+        <li><a href="responsivo.html">Design Responsivo</a></li>
+        <li><a href="personalizacao.html">Personalização</a></li>
+        <li><a href="inteligencia.html">Acessibilidade com IA</a></li>
+        <li><a href="leitura.html">Facilitação de Leitura</a></li>
+        <li><a href="gestos.html" class="active">Suporte a Gestos</a></li>
+        <li><a href="notificacoes.html">Notificações</a></li>
+        <li><a href="teclado.html">Navegação por Teclado</a></li>
+        <li><a href="pagamento.html">Pagamentos</a></li>
+        <li><a href="usabilidade.html">Testes de Usabilidade</a></li>
+        <li><a href="servicos.html">Serviços Essenciais</a></li>
+        <li><a href="experiencia.html">Níveis de Experiência</a></li>
+        <li><a href="movimentos.html">Suporte a Movimentos</a></li>
+        <li><a href="controle.html">Controle da Interface</a></li>
+        <li><a href="auditivo.html">Recursos Auditivos</a></li>
+        <li><a href="tecnologia.html">Tecnologia Assistiva</a></li>
+        <li><a href="dispositivos.html">Dispositivos Antigos</a></li>
+        <li><a href="fraudes.html">Proteção Contra Fraudes</a></li>
+        <li><a href="social.html">Engajamento Social</a></li>
+        <li><a href="frameworks.html">Frameworks</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <!-- Seção de Título e Explicação -->
+      <section class="section">
+        <h1>Suporte a Gestos e Comandos Táteis</h1>
+        <p>
+          Esta funcionalidade permite que os usuários interajam com a interface por meio de movimentos simples como arrastar para os lados. Isso pode ser útil para quem tem dificuldades com cliques tradicionais ou pequenos botões.
+        </p>
+      </section>
+
+      <!-- Exemplo prático -->
+      <section class="example">
+        <h2>Exemplo: Interação por Gesto</h2>
+        <div id="gesto-area" aria-label="Área de gesto" tabindex="0">
+          Arraste para os lados com o mouse ou toque
+        </div>
+        <p id="gesto-mensagem" aria-live="polite"></p>
+      </section>
+
+      <!-- Seção de Código-Fonte -->
+      <section class="code-box">
+        <h2>Código-Fonte Utilizado</h2>
+        <pre>
+HTML:
+&lt;div id="gesto-area"&gt;Arraste para os lados&lt;/div&gt;
+&lt;p id="gesto-mensagem"&gt;&lt;/p&gt;
+
+JS:
+let startX = 0;
+let endX = 0;
+const area = document.getElementById("gesto-area");
+const mensagem = document.getElementById("gesto-mensagem");
+
+area.addEventListener("mousedown", (e) => startX = e.clientX);
+area.addEventListener("mouseup", (e) => {
+  endX = e.clientX;
+  detectarMovimento();
+});
+area.addEventListener("touchstart", (e) => startX = e.touches[0].clientX, false);
+area.addEventListener("touchend", (e) => {
+  endX = e.changedTouches[0].clientX;
+  detectarMovimento();
+});
+
+function detectarMovimento() {
+  if (startX - endX > 50) {
+    mensagem.innerText = "Você arrastou para a esquerda!";
+  } else if (endX - startX > 50) {
+    mensagem.innerText = "Você arrastou para a direita!";
+  } else {
+    mensagem.innerText = "";
+  }
+}
+        </pre>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Código já incluso no JS interno da página
+    let startX = 0;
+    let endX = 0;
+    const area = document.getElementById("gesto-area");
+    const mensagem = document.getElementById("gesto-mensagem");
+
+    area.addEventListener("mousedown", (e) => startX = e.clientX);
+    area.addEventListener("mouseup", (e) => {
+      endX = e.clientX;
+      detectarMovimento();
+    });
+
+    area.addEventListener("touchstart", (e) => startX = e.touches[0].clientX, false);
+    area.addEventListener("touchend", (e) => {
+      endX = e.changedTouches[0].clientX;
+      detectarMovimento();
+    });
+
+    function detectarMovimento() {
+      if (startX - endX > 50) {
+        mensagem.innerText = "Você arrastou para a esquerda!";
+      } else if (endX - startX > 50) {
+        mensagem.innerText = "Você arrastou para a direita!";
+      } else {
+        mensagem.innerText = "";
+      }
+    }
+const toggleSidebarBtn = document.getElementById("toggleSidebar");
+const sidebar = document.querySelector(".sidebar");
+
+if (toggleSidebarBtn && sidebar) {
+  toggleSidebarBtn.addEventListener("click", function () {
+    sidebar.classList.toggle("active");
+  });
+
+  function handleResize() {
+    if (window.innerWidth > 768) {
+      sidebar.classList.remove("active");
+      sidebar.style.left = "0";
+    } else {
+      sidebar.style.left = "";
+    }
+  }
+
+  window.addEventListener("resize", handleResize);
+  window.addEventListener("DOMContentLoaded", handleResize);
+}
+  </script>
+</body>
+</html>

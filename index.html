@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UADG-WS | Acessibilidade Digital para Idosos</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilo melhorado com background semi-transparente */
+    .background {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+    }
+    
+    .background::before {
+      content: "";
+      background-image: url(imagem/background.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.5; /* Ajuste a transparência aqui (0.5 = 50%) */
+      z-index: -1;
+    }
+    
+    .content-overlay {
+      background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+      padding: 1.2rem;
+      border-radius: 15px;
+      max-width: 90%;
+    }
+
+    .background h1 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    }
+
+    .background p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    .botao-explorar {
+      padding: 15px 30px;
+      font-size: 1.3rem;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .botao-explorar:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+
+<body>
+<button id="toggleSidebar">☰ Menu</button>
+  <div class="main-container">
+    <nav class="sidebar" aria-label="Menu principal de navegação">
+      <ul>
+        <li><a href="index.html" class="active">Início</a></li>
+        <li><a href="tipografia.html">Tipografia e Textos</a></li>
+        <li><a href="tempo.html">Tempo e Interação</a></li>
+        <li><a href="estresse.html">Redução de Estresse</a></li>
+        <li><a href="erros.html">Prevenção de Erros</a></li>
+        <li><a href="seguranca.html">Segurança</a></li>
+        <li><a href="responsivo.html">Design Responsivo</a></li>
+        <li><a href="personalizacao.html">Personalização</a></li>
+        <li><a href="inteligencia.html">Acessibilidade com IA</a></li>
+        <li><a href="leitura.html">Facilitação de Leitura</a></li>
+        <li><a href="gestos.html">Suporte a Gestos</a></li>
+        <li><a href="notificacoes.html">Notificações</a></li>
+        <li><a href="teclado.html">Navegação por Teclado</a></li>
+        <li><a href="pagamento.html">Pagamentos</a></li>
+        <li><a href="usabilidade.html">Testes de Usabilidade</a></li>
+        <li><a href="servicos.html">Serviços Essenciais</a></li>
+        <li><a href="experiencia.html">Níveis de Experiência</a></li>
+        <li><a href="movimentos.html">Suporte a Movimentos</a></li>
+        <li><a href="controle.html">Controle da Interface</a></li>
+        <li><a href="auditivo.html">Recursos Auditivos</a></li>
+        <li><a href="tecnologia.html">Tecnologia Assistiva</a></li>
+        <li><a href="dispositivos.html">Dispositivos Antigos</a></li>
+        <li><a href="fraudes.html">Proteção Contra Fraudes</a></li>
+        <li><a href="social.html">Engajamento Social</a></li>
+        <li><a href="frameworks.html">Frameworks</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <section class="background">
+        <div class="content-overlay">
+          <h1>UADG-WS</h1>
+          <p>
+            <strong>Conectando gerações através da tecnologia</strong><br>
+            Transformando desafios digitais em experiências simples e acolhedoras.
+            <br>
+            <strong>Guia completo para desenvolvedores</strong><br>
+            Diretrizes práticas que tornam qualquer site amigável para a melhor idade,
+            combinando acessibilidade com design moderno</p>
+            <p class="mobile-hide">
+            Oferencendo diretrizes práticas de acessibilidade, ferramentas e exemplos<br>
+            para desenvolvedores criarem interfaces que respeitem as necessidades<br>
+            dos usuários idosos, promovendo verdadeira inclusão digital.
+            Aqui você encontrará desde ajustes de tipografia até sistemas de<br>
+            para prevenção de erros, tudo pensado para o conforto e autonomia do público sênior.
+          </p>
+          <a href="tipografia.html" class="botao-explorar">Comece a Explorar</a>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+<script>
+  const toggleSidebarBtn = document.getElementById("toggleSidebar");
+const sidebar = document.querySelector(".sidebar");
+
+if (toggleSidebarBtn && sidebar) {
+  toggleSidebarBtn.addEventListener("click", function () {
+    sidebar.classList.toggle("active");
+  });
+
+  function handleResize() {
+    if (window.innerWidth > 768) {
+      sidebar.classList.remove("active");
+      sidebar.style.left = "0";
+    } else {
+      sidebar.style.left = "";
+    }
+  }
+
+  window.addEventListener("resize", handleResize);
+  window.addEventListener("DOMContentLoaded", handleResize);
+}
+</script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tipografia e Textos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="toggleSidebar">☰ Menu</button>
+  <div class="main-container">
+    <nav class="sidebar" aria-label="Menu principal de navegação">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tipografia.html" class="active">Tipografia e Textos</a></li>
+        <li><a href="tempo.html">Tempo e Interação</a></li>
+        <li><a href="estresse.html">Redução de Estresse</a></li>
+        <li><a href="erros.html">Prevenção de Erros</a></li>
+        <li><a href="seguranca.html">Segurança</a></li>
+        <li><a href="responsivo.html">Design Responsivo</a></li>
+        <li><a href="personalizacao.html">Personalização</a></li>
+        <li><a href="inteligencia.html">Acessibilidade com IA</a></li>
+        <li><a href="leitura.html">Facilitação de Leitura</a></li>
+        <li><a href="gestos.html">Suporte a Gestos</a></li>
+        <li><a href="notificacoes.html">Notificações</a></li>
+        <li><a href="teclado.html">Navegação por Teclado</a></li>
+        <li><a href="pagamento.html">Pagamentos</a></li>
+        <li><a href="usabilidade.html">Testes de Usabilidade</a></li>
+        <li><a href="servicos.html">Serviços Essenciais</a></li>
+        <li><a href="experiencia.html">Níveis de Experiência</a></li>
+        <li><a href="movimentos.html">Suporte a Movimentos</a></li>
+        <li><a href="controle.html">Controle da Interface</a></li>
+        <li><a href="auditivo.html">Recursos Auditivos</a></li>
+        <li><a href="tecnologia.html">Tecnologia Assistiva</a></li>
+        <li><a href="dispositivos.html">Dispositivos Antigos</a></li>
+        <li><a href="fraudes.html">Proteção Contra Fraudes</a></li>
+        <li><a href="social.html">Engajamento Social</a></li>
+        <li><a href="frameworks.html">Frameworks</a></li>
+      </ul>  
+    </nav>
+
+    <main class="content">
+      <!-- Título e Explicação -->
+      <section class="section">
+        <h1>Tipografia e Textos</h1>
+        <p>A leitura acessível para idosos exige fontes adequadas, bom espaçamento e alto contraste, favorecendo a compreensão e reduzindo o esforço visual.</p>
+      </section>
+
+      <!-- Exemplo Prático -->
+      <section class="example">
+        <h2>Exemplo: Ajuste de Tamanho da Fonte</h2>
+        <p id="texto-ajustavel">Experimente ajustar o tamanho deste texto.</p>
+        <div class="botoes-ajuste-fonte">
+          <button onclick="aumentarFonte()" aria-label="Aumentar tamanho da fonte">Aumentar Fonte</button>
+          <button onclick="diminuirFonte()" aria-label="Diminuir tamanho da fonte">Diminuir Fonte</button>
+        </div>
+      </section>
+
+      <!-- Código-Fonte -->
+      <section class="code-box">
+        <h2>Código-Fonte Utilizado</h2>
+        <pre>
+HTML:
+&lt;p id="texto-ajustavel"&gt;Experimente ajustar o tamanho deste texto.&lt;/p&gt;
+&lt;button onclick="aumentarFonte()" aria-label="Aumentar tamanho da fonte"&gt;Aumentar Fonte&lt;/button&gt;
+&lt;button onclick="diminuirFonte()" aria-label="Diminuir tamanho da fonte"&gt;Diminuir Fonte&lt;/button&gt;
+
+JS:
+function aumentarFonte() {
+  document.getElementById("texto-ajustavel").style.fontSize = "22px";
+}
+
+function diminuirFonte() {
+  document.getElementById("texto-ajustavel").style.fontSize = "16px";
+}
+        </pre>
+      </section>
+    </main>
+  </div>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>

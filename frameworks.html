@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Frameworks e Bibliotecas</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<button id="toggleSidebar">☰ Menu</button>
+<div class="main-container">
+  <nav class="sidebar">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="tipografia.html">Tipografia e Textos</a></li>
+      <li><a href="tempo.html">Tempo e Interação</a></li>
+      <li><a href="estresse.html">Redução de Estresse</a></li>
+      <li><a href="erros.html">Prevenção de Erros</a></li>
+      <li><a href="seguranca.html">Segurança</a></li>
+      <li><a href="responsivo.html">Design Responsivo</a></li>
+      <li><a href="personalizacao.html">Personalização</a></li>
+      <li><a href="inteligencia.html">Acessibilidade com IA</a></li>
+      <li><a href="leitura.html">Facilitação de Leitura</a></li>
+      <li><a href="gestos.html">Suporte a Gestos</a></li>
+      <li><a href="notificacoes.html">Notificações</a></li>
+      <li><a href="teclado.html">Navegação por Teclado</a></li>
+      <li><a href="pagamento.html">Pagamentos</a></li>
+      <li><a href="usabilidade.html">Testes de Usabilidade</a></li>
+      <li><a href="servicos.html">Serviços Essenciais</a></li>
+      <li><a href="experiencia.html">Níveis de Experiência</a></li>
+      <li><a href="movimentos.html">Suporte a Movimentos</a></li>
+      <li><a href="controle.html">Controle da Interface</a></li>
+      <li><a href="auditivo.html">Recursos Auditivos</a></li>
+      <li><a href="tecnologia.html">Tecnologia Assistiva</a></li>
+      <li><a href="dispositivos.html">Dispositivos Antigos</a></li>
+      <li><a href="fraudes.html">Proteção Contra Fraudes</a></li>
+      <li><a href="social.html">Engajamento Social</a></li>
+      <li><a href="frameworks.html" class="active">Frameworks</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <h1>Exemplos Práticos de Frameworks e Bibliotecas</h1>
+    <p>Veja como diferentes ferramentas auxiliam na criação de interfaces acessíveis para o público idoso.</p>
+
+    <!-- Bootstrap -->
+    <div class="example">
+      <h2><strong>1. Bootstrap</h2></strong>
+      <p><strong>Descrição:</strong> Framework front-end com componentes responsivos e acessíveis.</p>
+      <p><strong>Benefícios:</strong> Botões grandes, contraste adequado e suporte a navegação por teclado.</p><br>
+      <button class="btn btn-primary btn-lg" style="outline: 2px solid #000;">Botão Acessível (Bootstrap)</button>
+    </div>
+    <div class="code-box">
+      &lt;button class="btn btn-primary btn-lg" style="outline: 2px solid #000;"&gt;<br>
+      &nbsp;&nbsp;Botão Acessível (Bootstrap)<br>
+      &lt;/button&gt;
+    </div>
+
+    <!-- Tailwind CSS -->
+    <div class="example">
+      <h2><strong>2. Tailwind CSS</h2></strong>
+      <p><strong>Descrição:</strong> Framework utilitário para criação rápida de interfaces personalizadas.</p>
+      <p><strong>Benefícios:</strong> Controle preciso de tamanhos, cores, espaçamento e contraste.</p><br>
+      <div class="p-4 bg-white text-black text-lg leading-relaxed rounded shadow">
+        Parágrafo com espaçamento e contraste ideal para leitura.
+      </div>
+    </div>
+    <div class="code-box">
+      &lt;div class="p-4 bg-white text-black text-lg leading-relaxed rounded shadow"&gt;<br>
+      &nbsp;&nbsp;Parágrafo com espaçamento e contraste ideal para leitura.<br>
+      &lt;/div&gt;
+    </div>
+
+    <!-- React + React Aria -->
+    <div class="example">
+      <h2><strong>3. React + React Aria</h2></strong>
+      <p><strong>Descrição:</strong> Biblioteca da Adobe para acessibilidade em componentes React.</p>
+      <p><strong>Benefícios:</strong> Navegação com teclado, foco visível e acessibilidade nativa.</p><br>
+      <button class="btn btn-outline-primary" style="outline: 3px solid #0056b3;">Botão com Foco Acessível</button>
+    </div>
+    <div class="code-box">
+      import {'{ useRef }'} from 'react';<br>
+      import {'{ useButton }'} from 'react-aria';<br><br>
+      function MyButton(props) {'{'}<br>
+      &nbsp;&nbsp;let ref = useRef();<br>
+      &nbsp;&nbsp;let {'{ buttonProps }'} = useButton(props, ref);<br><br>
+      &nbsp;&nbsp;return (<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;button {...buttonProps} ref={ref}&gt;Clique Aqui&lt;/button&gt;<br>
+      &nbsp;&nbsp;);<br>
+      {'}'}
+    </div>
+
+    <!-- Vue.js -->
+    <div class="example">
+      <h2><strong>4. Vue.js</h2></strong>
+      <p><strong>Descrição:</strong> Framework progressivo para construção de interfaces interativas.</p>
+      <p><strong>Benefícios:</strong> Estrutura simples, controle de eventos e foco em acessibilidade.</p><br>
+      <button class="bg-blue-600 text-white p-3 rounded">Ação com Acessibilidade</button>
+    </div>
+    <div class="code-box">
+      &lt;button class="bg-blue-600 text-white p-3 rounded"&gt;<br>
+      &nbsp;&nbsp;Ação com Acessibilidade<br>
+      &lt;/button&gt;
+    </div>
+
+    <!-- Material UI -->
+    <div class="example">
+      <h2><strong>5. Material UI</h2></strong>
+      <p><strong>Descrição:</strong> Biblioteca React com componentes acessíveis seguindo padrões do Google.</p>
+      <p><strong>Benefícios:</strong> Foco automático, contraste, acessibilidade por teclado e leitores de tela.</p><br>
+      <button class="btn btn-success" style="outline: 2px dashed #333;">Botão com Estilo Material</button>
+    </div>
+    <div class="code-box">
+      import Button from '@mui/material/Button';<br><br>
+      &lt;Button variant="contained" color="primary"&gt;<br>
+      &nbsp;&nbsp;Confirmar<br>
+      &lt;/Button&gt;
+    </div>
+
+    <!-- Foundation -->
+    <div class="example">
+      <h2><strong>6. Foundation</h2></strong>
+      <p><strong>Descrição:</strong> Framework responsivo com ênfase em acessibilidade e semântica.</p>
+      <p><strong>Benefícios:</strong> Componentes claros, legibilidade e suporte a leitores de tela.</p><br>
+      <div class="callout primary">
+        <h5>Aviso Importante</h5>
+        <p>Este componente segue boas práticas de acessibilidade.</p>
+      </div>
+    </div>
+    <div class="code-box">
+      &lt;div class="callout primary"&gt;<br>
+      &nbsp;&nbsp;&lt;h5&gt;Aviso Importante&lt;/h5&gt;<br>
+      &nbsp;&nbsp;&lt;p&gt;Este componente segue boas práticas de acessibilidade.&lt;/p&gt;<br>
+      &lt;/div&gt;
+    </div>
+
+    <!-- A11Y Project -->
+    <div class="example">
+      <h2><strong>7. A11Y Project</h2></strong>
+      <p><strong>Descrição:</strong> Iniciativa colaborativa com práticas e exemplos de acessibilidade na web.</p>
+      <p><strong>Benefícios:</strong> Foco em semântica, boas práticas, atributos ARIA e acessibilidade nativa.</p><br>
+      <label for="email">Seu e-mail:</label>
+      <input type="email" id="email" required aria-required="true" class="form-control" />
+    </div>
+    <div class="code-box">
+      &lt;label for="email"&gt;Seu e-mail:&lt;/label&gt;<br>
+      &lt;input type="email" id="email" required aria-required="true"&gt;
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

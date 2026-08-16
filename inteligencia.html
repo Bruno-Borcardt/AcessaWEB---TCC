@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acessibilidade com IA</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<button id="toggleSidebar">☰ Menu</button>
+  <div class="main-container">
+    <nav class="sidebar" aria-label="Menu principal de navegação">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tipografia.html">Tipografia e Textos</a></li>
+        <li><a href="tempo.html">Tempo e Interação</a></li>
+        <li><a href="estresse.html">Redução de Estresse</a></li>
+        <li><a href="erros.html">Prevenção de Erros</a></li>
+        <li><a href="seguranca.html">Segurança</a></li>
+        <li><a href="responsivo.html">Design Responsivo</a></li>
+        <li><a href="personalizacao.html">Personalização</a></li>
+        <li><a href="inteligencia.html" class="active">Acessibilidade com IA</a></li>
+        <li><a href="leitura.html">Facilitação de Leitura</a></li>
+        <li><a href="gestos.html">Suporte a Gestos</a></li>
+        <li><a href="notificacoes.html">Notificações</a></li>
+        <li><a href="teclado.html">Navegação por Teclado</a></li>
+        <li><a href="pagamento.html">Pagamentos</a></li>
+        <li><a href="usabilidade.html">Testes de Usabilidade</a></li>
+        <li><a href="servicos.html">Serviços Essenciais</a></li>
+        <li><a href="experiencia.html">Níveis de Experiência</a></li>
+        <li><a href="movimentos.html">Suporte a Movimentos</a></li>
+        <li><a href="controle.html">Controle da Interface</a></li>
+        <li><a href="auditivo.html">Recursos Auditivos</a></li>
+        <li><a href="tecnologia.html">Tecnologia Assistiva</a></li>
+        <li><a href="dispositivos.html">Dispositivos Antigos</a></li>
+        <li><a href="fraudes.html">Proteção Contra Fraudes</a></li>
+        <li><a href="social.html">Engajamento Social</a></li>
+        <li><a href="frameworks.html">Frameworks</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      
+      <!-- Seção de Título e Explicação -->
+      <section class="section">
+        <h1>Acessibilidade Avançada com Inteligência Artificial</h1>
+        <p>A Inteligência Artificial pode melhorar a acessibilidade por meio de personalização automatizada. Um dos exemplos é o uso de síntese de voz para leitura de conteúdos, facilitando o acesso à informação por pessoas com baixa visão ou dificuldade de leitura.</p>
+      </section>
+
+      <!-- Seção de Exemplo Prático -->
+      <section class="example">
+        <h2>Exemplo: Leitura Automática por Voz</h2>
+        <p id="texto-leitura">Clique no botão abaixo para que a IA leia este texto em voz alta.</p>
+        <button onclick="lerTexto()">🔊 Ouvir Texto</button>
+      </section>
+
+      <!-- Seção de Código-Fonte -->
+      <section class="code-box">
+        <h2>Código-Fonte Utilizado</h2>
+<pre>
+HTML:
+&lt;p id="texto-leitura"&gt;Clique no botão abaixo para que a IA leia este texto em voz alta.&lt;/p&gt;
+&lt;button onclick="lerTexto()"&gt;🔊 Ouvir Texto&lt;/button&gt;
+
+JavaScript:
+function lerTexto() {
+    const texto = document.getElementById("texto-leitura").innerText;
+    const sintetizador = new SpeechSynthesisUtterance(texto);
+    window.speechSynthesis.speak(sintetizador);
+}
+</pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

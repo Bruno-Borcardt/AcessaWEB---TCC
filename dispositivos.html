@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compatibilidade com Dispositivos Antigos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="toggleSidebar">☰ Menu</button>
+<div class="main-container">
+    <nav class="sidebar">
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="tipografia.html">Tipografia e Textos</a></li>
+            <li><a href="tempo.html">Tempo e Interação</a></li>
+            <li><a href="estresse.html">Redução de Estresse</a></li>
+            <li><a href="erros.html">Prevenção de Erros</a></li>
+            <li><a href="seguranca.html">Segurança</a></li>
+            <li><a href="responsivo.html">Design Responsivo</a></li>
+            <li><a href="personalizacao.html">Personalização</a></li>
+            <li><a href="inteligencia.html">Acessibilidade com IA</a></li>
+            <li><a href="leitura.html">Facilitação de Leitura</a></li>
+            <li><a href="gestos.html">Suporte a Gestos</a></li>
+            <li><a href="notificacoes.html">Notificações</a></li>
+            <li><a href="teclado.html">Navegação por Teclado</a></li>
+            <li><a href="pagamento.html">Pagamentos</a></li>
+            <li><a href="usabilidade.html">Testes de Usabilidade</a></li>
+            <li><a href="servicos.html">Serviços Essenciais</a></li>
+            <li><a href="experiencia.html">Níveis de Experiência</a></li>
+            <li><a href="movimentos.html">Suporte a Movimentos</a></li>
+            <li><a href="controle.html">Controle da Interface</a></li>
+            <li><a href="auditivo.html">Recursos Auditivos</a></li>
+            <li><a href="tecnologia.html">Tecnologia Assistiva</a></li>
+            <li><a href="dispositivos.html" class="active">Dispositivos Antigos</a></li>
+            <li><a href="fraudes.html">Proteção Contra Fraudes</a></li>
+            <li><a href="social.html">Engajamento Social</a></li>
+            <li><a href="frameworks.html">Frameworks</a></li>
+        </ul>      
+    </nav>
+
+    <main class="content">
+
+        <!-- Título e Introdução -->
+        <h1>Compatibilidade com Dispositivos Antigos</h1>
+        <p>Para garantir a acessibilidade de usuários que ainda utilizam dispositivos antigos ou navegadores desatualizados, é essencial que o site tenha código limpo, carregamento leve e verificação de recursos modernos.</p>
+
+        <!-- Exemplo Prático -->
+        <div class="example">
+            <h2>Exemplo Prático: Verificação de Compatibilidade</h2>
+            <p id="compatibilidade">Se você vê este texto, seu navegador é compatível.</p>
+        </div>
+
+        <!-- Código-fonte -->
+        <div class="code-box">
+            <h2>Código-Fonte Utilizado</h2>
+            <pre>
+HTML:
+&lt;p id="compatibilidade"&gt;
+    Se você vê este texto, seu navegador é compatível.
+&lt;/p&gt;
+
+JavaScript:
+if (typeof Symbol === "undefined") {
+    document.getElementById("compatibilidade").innerText = "Seu navegador pode não suportar recursos modernos.";
+}
+            </pre>
+        </div>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

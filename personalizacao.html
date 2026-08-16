@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personalização e Configurações</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Estilo extra para o alerta */
+    #alerta-fonte {
+      display: none;
+      background-color: #198754;
+      color: #fff;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      animation: fadeInOut 3s forwards;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+<button id="toggleSidebar">☰ Menu</button>
+  <div class="main-container">
+    <nav class="sidebar" aria-label="Menu principal de navegação">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tipografia.html">Tipografia e Textos</a></li>
+        <li><a href="tempo.html">Tempo e Interação</a></li>
+        <li><a href="estresse.html">Redução de Estresse</a></li>
+        <li><a href="erros.html">Prevenção de Erros</a></li>
+        <li><a href="seguranca.html">Segurança</a></li>
+        <li><a href="responsivo.html">Design Responsivo</a></li>
+        <li><a href="personalizacao.html" class="active">Personalização</a></li>
+        <li><a href="inteligencia.html">Acessibilidade com IA</a></li>
+        <li><a href="leitura.html">Facilitação de Leitura</a></li>
+        <li><a href="gestos.html">Suporte a Gestos</a></li>
+        <li><a href="notificacoes.html">Notificações</a></li>
+        <li><a href="teclado.html">Navegação por Teclado</a></li>
+        <li><a href="pagamento.html">Pagamentos</a></li>
+        <li><a href="usabilidade.html">Testes de Usabilidade</a></li>
+        <li><a href="servicos.html">Serviços Essenciais</a></li>
+        <li><a href="experiencia.html">Níveis de Experiência</a></li>
+        <li><a href="movimentos.html">Suporte a Movimentos</a></li>
+        <li><a href="controle.html">Controle da Interface</a></li>
+        <li><a href="auditivo.html">Recursos Auditivos</a></li>
+        <li><a href="tecnologia.html">Tecnologia Assistiva</a></li>
+        <li><a href="dispositivos.html">Dispositivos Antigos</a></li>
+        <li><a href="fraudes.html">Proteção Contra Fraudes</a></li>
+        <li><a href="social.html">Engajamento Social</a></li>
+        <li><a href="frameworks.html">Frameworks</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      
+      <!-- ALERTA DE FONTE -->
+      <div id="alerta-fonte"></div>
+
+      <!-- Seção de Título -->
+      <section class="section">
+        <h1>Personalização e Configurações Adaptáveis</h1>
+        <p>Permitir que os usuários personalizem a experiência melhora a acessibilidade. Exemplo: ajuste de cores e tamanho da fonte.</p>
+      </section>
+
+      <!-- Exemplo Prático -->
+      <section class="example">
+        <h2>Exemplo: Alteração de Tema e Tamanho de Fonte</h2>
+        <button onclick="ativarAltoContraste()">Modo Alto Contraste</button>
+        <button onclick="desativarAltoContraste()">Modo Normal</button>
+        <br><br>
+        <button onclick="aumentarFonte()">Aumentar Fonte</button>
+        <button onclick="diminuirFonte()">Diminuir Fonte</button>
+
+        <p id="texto-exemplo">Este é um exemplo de personalização de cores e tamanhos de fonte.</p>
+      </section>
+
+      <!-- Seção de Código-Fonte -->
+      <section class="code-box">
+        <h2>Código-Fonte Utilizado</h2>
+        <pre>
+HTML:
+&lt;button onclick="ativarAltoContraste()"&gt;Modo Alto Contraste&lt;/button&gt;
+&lt;button onclick="desativarAltoContraste()"&gt;Modo Normal&lt;/button&gt;
+&lt;button onclick="aumentarFonte()"&gt;Aumentar Fonte&lt;/button&gt;
+&lt;button onclick="diminuirFonte()"&gt;Diminuir Fonte&lt;/button&gt;
+&lt;p id="texto-exemplo"&gt;Texto para personalizar&lt;/p&gt;
+
+CSS:
+#alerta-fonte {
+  display: none;
+  background-color: #198754;
+  color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  animation: fadeInOut 3s forwards;
+}
+
+JS:
+function ativarAltoContraste() {
+  document.body.classList.add("alto-contraste");
+}
+
+function desativarAltoContraste() {
+  document.body.classList.remove("alto-contraste");
+}
+
+function aumentarFonte() {
+  let elemento = document.getElementById("texto-exemplo");
+  let tamanhoAtual = window.getComputedStyle(elemento).fontSize;
+  let novoTamanho = parseFloat(tamanhoAtual) + 2;
+  elemento.style.fontSize = novoTamanho + "px";
+  mostrarAlerta("Fonte aumentada!");
+}
+
+function diminuirFonte() {
+  let elemento = document.getElementById("texto-exemplo");
+  let tamanhoAtual = window.getComputedStyle(elemento).fontSize;
+  let novoTamanho = parseFloat(tamanhoAtual) - 2;
+  if (novoTamanho >= 12) {
+    elemento.style.fontSize = novoTamanho + "px";
+    mostrarAlerta("Fonte reduzida!");
+  }
+}
+
+        </pre>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

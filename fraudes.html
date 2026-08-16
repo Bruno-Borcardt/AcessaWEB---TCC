@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proteção Contra Fraudes</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .alerta-fraude {
+      display: none;
+      background-color: #f8d7da;
+      color: #842029;
+      border: 1px solid #f5c2c7;
+      padding: 15px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 20px;
+      position: relative;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .alerta-fraude.mostrar {
+      display: block;
+    }
+
+    .alerta-fraude button.fechar-alerta {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #842029;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+<button id="toggleSidebar">☰ Menu</button>
+  <div class="main-container">
+    <nav class="sidebar">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tipografia.html">Tipografia e Textos</a></li>
+        <li><a href="tempo.html">Tempo e Interação</a></li>
+        <li><a href="estresse.html">Redução de Estresse</a></li>
+        <li><a href="erros.html">Prevenção de Erros</a></li>
+        <li><a href="seguranca.html">Segurança</a></li>
+        <li><a href="responsivo.html">Design Responsivo</a></li>
+        <li><a href="personalizacao.html">Personalização</a></li>
+        <li><a href="inteligencia.html">Acessibilidade com IA</a></li>
+        <li><a href="leitura.html">Facilitação de Leitura</a></li>
+        <li><a href="gestos.html">Suporte a Gestos</a></li>
+        <li><a href="notificacoes.html">Notificações</a></li>
+        <li><a href="teclado.html">Navegação por Teclado</a></li>
+        <li><a href="pagamento.html">Pagamentos</a></li>
+        <li><a href="usabilidade.html">Testes de Usabilidade</a></li>
+        <li><a href="servicos.html">Serviços Essenciais</a></li>
+        <li><a href="experiencia.html">Níveis de Experiência</a></li>
+        <li><a href="movimentos.html">Suporte a Movimentos</a></li>
+        <li><a href="controle.html">Controle da Interface</a></li>
+        <li><a href="auditivo.html">Recursos Auditivos</a></li>
+        <li><a href="tecnologia.html">Tecnologia Assistiva</a></li>
+        <li><a href="dispositivos.html">Dispositivos Antigos</a></li>
+        <li><a href="fraudes.html" class="active">Proteção Contra Fraudes</a></li>
+        <li><a href="social.html">Engajamento Social</a></li>
+        <li><a href="frameworks.html">Frameworks</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <!-- Seção de Título e Explicação -->
+      <section class="section">
+        <h1>Proteção Contra Fraudes e Golpes</h1>
+        <p>O site deve alertar usuários sobre golpes comuns e reforçar práticas seguras de navegação e compartilhamento de dados pessoais.</p>
+      </section>
+
+      <!-- Seção de Exemplo Prático -->
+      <section class="example">
+        <h2>Exemplo: Alerta de Segurança</h2>
+        <button onclick="mostrarAlertaFraude()">Clique para ver um alerta de segurança</button>
+
+        <div id="alerta-fraude" class="alerta-fraude" role="alert" aria-live="assertive">
+          <button class="fechar-alerta" onclick="fecharAlertaFraude()" aria-label="Fechar alerta">&times;</button>
+          ⚠️ Nunca compartilhe seus dados pessoais com terceiros. Desconfie de mensagens ou ligações suspeitas.
+        </div>
+      </section>
+
+      <!-- Seção de Código-Fonte -->
+      <section class="code-box">
+        <h2>Código-Fonte Utilizado</h2>
+        <pre>
+HTML:
+&lt;button onclick="mostrarAlertaFraude()"&gt;Clique para ver um alerta de segurança&lt;/button&gt;
+
+&lt;div id="alerta-fraude" class="alerta-fraude" role="alert" aria-live="assertive"&gt;
+  &lt;button class="fechar-alerta" onclick="fecharAlertaFraude()" aria-label="Fechar alerta"&gt;&times;&lt;/button&gt;
+  ⚠️ Nunca compartilhe seus dados pessoais com terceiros.
+&lt;/div&gt;
+
+JS:
+function mostrarAlertaFraude() {
+  const alerta = document.getElementById("alerta-fraude");
+  alerta.classList.add("mostrar");
+  setTimeout(() => alerta.classList.remove("mostrar"), 8000);
+}
+
+function fecharAlertaFraude() {
+  const alerta = document.getElementById("alerta-fraude");
+  alerta.classList.remove("mostrar");
+}
+        </pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function mostrarAlertaFraude() {
+      const alerta = document.getElementById("alerta-fraude");
+      alerta.classList.add("mostrar");
+      setTimeout(() => alerta.classList.remove("mostrar"), 8000);
+    }
+
+    function fecharAlertaFraude() {
+      const alerta = document.getElementById("alerta-fraude");
+      alerta.classList.remove("mostrar");
+    }
+  </script>
+</body>
+</html>

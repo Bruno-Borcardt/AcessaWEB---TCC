@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagamentos Acessíveis</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      padding: 12px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 350px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .botao-pagamento {
+      font-size: 18px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    #mensagem-pagamento {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #198754;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+<button id="toggleSidebar">☰ Menu</button>
+  <div class="main-container">
+    <nav class="sidebar">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tipografia.html">Tipografia e Textos</a></li>
+        <li><a href="tempo.html">Tempo e Interação</a></li>
+        <li><a href="estresse.html">Redução de Estresse</a></li>
+        <li><a href="erros.html">Prevenção de Erros</a></li>
+        <li><a href="seguranca.html">Segurança</a></li>
+        <li><a href="responsivo.html">Design Responsivo</a></li>
+        <li><a href="personalizacao.html">Personalização</a></li>
+        <li><a href="inteligencia.html">Acessibilidade com IA</a></li>
+        <li><a href="leitura.html">Facilitação de Leitura</a></li>
+        <li><a href="gestos.html">Suporte a Gestos</a></li>
+        <li><a href="notificacoes.html">Notificações</a></li>
+        <li><a href="teclado.html">Navegação por Teclado</a></li>
+        <li><a href="pagamento.html" class="active">Pagamentos</a></li>
+        <li><a href="usabilidade.html">Testes de Usabilidade</a></li>
+        <li><a href="servicos.html">Serviços Essenciais</a></li>
+        <li><a href="experiencia.html">Níveis de Experiência</a></li>
+        <li><a href="movimentos.html">Suporte a Movimentos</a></li>
+        <li><a href="controle.html">Controle da Interface</a></li>
+        <li><a href="auditivo.html">Recursos Auditivos</a></li>
+        <li><a href="tecnologia.html">Tecnologia Assistiva</a></li>
+        <li><a href="dispositivos.html">Dispositivos Antigos</a></li>
+        <li><a href="fraudes.html">Proteção Contra Fraudes</a></li>
+        <li><a href="social.html">Engajamento Social</a></li>
+        <li><a href="frameworks.html">Frameworks</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <!-- Seção de Título -->
+      <section class="section">
+        <h1>Pagamentos e Compras Acessíveis</h1>
+        <p>O processo de compra deve ser simples, seguro e acessível, com campos claros e confirmação por voz e mensagem visual.</p>
+      </section>
+
+      <!-- Exemplo Prático -->
+      <section class="example">
+        <h2>Exemplo: Formulário de Pagamento</h2>
+
+        <div class="form-group">
+          <label for="cartao">Número do Cartão:</label>
+          <input type="text" id="cartao" name="cartao" placeholder="0000 0000 0000 0000" aria-label="Número do cartão de crédito" />
+        </div>
+
+        <button class="botao-pagamento" onclick="confirmarCompra()" onkeyup="ativarTeclado(event, this)" tabindex="0">
+          Finalizar Compra
+        </button>
+
+        <p id="mensagem-pagamento" role="alert" aria-live="polite"></p>
+      </section>
+
+      <!-- Código-Fonte -->
+      <section class="code-box">
+        <h2>Código-Fonte Utilizado</h2>
+<pre>
+HTML:
+&lt;label for="cartao"&gt;Número do Cartão:&lt;/label&gt;
+&lt;input type="text" id="cartao" placeholder="0000 0000 0000 0000"&gt;
+&lt;button onclick="confirmarCompra()"&gt;Finalizar Compra&lt;/button&gt;
+&lt;p id="mensagem-pagamento"&gt;&lt;/p&gt;
+
+JS:
+function confirmarCompra() {
+    const cartao = document.getElementById("cartao");
+    const mensagem = document.getElementById("mensagem-pagamento");
+    const valor = cartao.value.replace(/\D/g, "");
+  
+    if (valor.length < 16) {
+      const textoErro = "Número do cartão inválido. Insira os 16 dígitos.";
+      mensagem.innerText = textoErro;
+      mensagem.style.color = "#dc3545";
+      mensagem.setAttribute("role", "alert");
+      cartao.focus();
+  
+      const vozErro = new SpeechSynthesisUtterance(textoErro);
+      window.speechSynthesis.speak(vozErro);
+      return;
+    }
+    if (valor.length > 16) {
+      const textoErro = "Número do cartão inválido. Insira apenas 16 dígitos.";
+      mensagem.innerText = textoErro;
+      mensagem.style.color = "#dc3545";
+      mensagem.setAttribute("role", "alert");
+      cartao.focus();
+  
+      const vozErro = new SpeechSynthesisUtterance(textoErro);
+      window.speechSynthesis.speak(vozErro);
+      return;
+    }
+  
+    const textoSucesso = "Compra realizada com sucesso!";
+    mensagem.innerText = textoSucesso;
+    mensagem.style.color = "#198754";
+    const voz = new SpeechSynthesisUtterance(textoSucesso);
+    window.speechSynthesis.speak(voz);
+  }
+</pre>
+      </section>
+    </main>
+  </div>
+
+  <script>
+   function confirmarCompra() {
+  const cartao = document.getElementById("cartao");
+  const mensagem = document.getElementById("mensagem-pagamento");
+  const valor = cartao.value.replace(/\D/g, ""); // remove tudo que não é número
+
+  if (valor.length < 16) {
+    const textoErro = "Número do cartão inválido. Insira os 16 dígitos.";
+    mensagem.innerText = textoErro;
+    mensagem.style.color = "#dc3545"; // vermelho
+    mensagem.setAttribute("role", "alert");
+    cartao.focus();
+
+    const vozErro = new SpeechSynthesisUtterance(textoErro);
+    window.speechSynthesis.speak(vozErro);
+    return;
+  }
+  if (valor.length > 16) {
+    const textoErro = "Número do cartão inválido. Insira apenas 16 dígitos.";
+    mensagem.innerText = textoErro;
+    mensagem.style.color = "#dc3545"; // vermelho
+    mensagem.setAttribute("role", "alert");
+    cartao.focus();
+
+    const vozErro = new SpeechSynthesisUtterance(textoErro);
+    window.speechSynthesis.speak(vozErro);
+    return;
+  }
+
+  const textoSucesso = "Compra realizada com sucesso!";
+  mensagem.innerText = textoSucesso;
+  mensagem.style.color = "#198754"; // verde
+  const voz = new SpeechSynthesisUtterance(textoSucesso);
+  window.speechSynthesis.speak(voz);
+}
+const toggleSidebarBtn = document.getElementById("toggleSidebar");
+const sidebar = document.querySelector(".sidebar");
+
+if (toggleSidebarBtn && sidebar) {
+  toggleSidebarBtn.addEventListener("click", function () {
+    sidebar.classList.toggle("active");
+  });
+
+  function handleResize() {
+    if (window.innerWidth > 768) {
+      sidebar.classList.remove("active");
+      sidebar.style.left = "0";
+    } else {
+      sidebar.style.left = "";
+    }
+  }
+
+  window.addEventListener("resize", handleResize);
+  window.addEventListener("DOMContentLoaded", handleResize);
+}
+  </script>
+</body>
+</html>

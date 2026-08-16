@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Níveis de Experiência</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<button id="toggleSidebar">☰ Menu</button>
+<div class="main-container">
+
+  <!-- Sidebar de navegação -->
+  <nav class="sidebar">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="tipografia.html">Tipografia e Textos</a></li>
+      <li><a href="tempo.html">Tempo e Interação</a></li>
+      <li><a href="estresse.html">Redução de Estresse</a></li>
+      <li><a href="erros.html">Prevenção de Erros</a></li>
+      <li><a href="seguranca.html">Segurança</a></li>
+      <li><a href="responsivo.html">Design Responsivo</a></li>
+      <li><a href="personalizacao.html">Personalização</a></li>
+      <li><a href="inteligencia.html">Acessibilidade com IA</a></li>
+      <li><a href="leitura.html">Facilitação de Leitura</a></li>
+      <li><a href="gestos.html">Suporte a Gestos</a></li>
+      <li><a href="notificacoes.html">Notificações</a></li>
+      <li><a href="teclado.html">Navegação por Teclado</a></li>
+      <li><a href="pagamento.html">Pagamentos</a></li>
+      <li><a href="usabilidade.html">Testes de Usabilidade</a></li>
+      <li><a href="servicos.html">Serviços Essenciais</a></li>
+      <li><a href="experiencia.html" class="active">Níveis de Experiência</a></li>
+      <li><a href="movimentos.html">Suporte a Movimentos</a></li>
+      <li><a href="controle.html">Controle da Interface</a></li>
+      <li><a href="auditivo.html">Recursos Auditivos</a></li>
+      <li><a href="tecnologia.html">Tecnologia Assistiva</a></li>
+      <li><a href="dispositivos.html">Dispositivos Antigos</a></li>
+      <li><a href="fraudes.html">Proteção Contra Fraudes</a></li>
+      <li><a href="social.html">Engajamento Social</a></li>
+      <li><a href="frameworks.html">Frameworks</a></li>
+    </ul>
+  </nav>
+
+  <!-- Conteúdo principal -->
+  <main class="content">
+
+    <!-- Introdução -->
+    <h1>Adaptação a Diferentes Níveis de Experiência Digital</h1>
+    <p>Nem todos os idosos têm o mesmo grau de familiaridade com a tecnologia. Interfaces adaptativas devem oferecer modos simplificados, dicas progressivas e guias interativos que acompanhem o ritmo do usuário.</p>
+
+    <!-- Exemplo prático -->
+    <div class="example">
+      <h2>Exemplo: Ativação de Tutorial</h2>
+      <button onclick="mostrarTutorial()">Ativar Tutorial</button>
+
+      <div id="tutorial-texto" class="caixa-responsiva" style="display: none; margin-top: 15px;">
+        Este é um guia passo a passo para ajudar o usuário a navegar pelo site com tranquilidade e autonomia.
+      </div>
+    </div>
+
+    <!-- Código-fonte -->
+    <div class="code-box">
+      <h2>Código-Fonte Utilizado</h2>
+      <pre>
+HTML:
+&lt;button onclick="mostrarTutorial()"&gt;Ativar Tutorial&lt;/button&gt;
+&lt;div id="tutorial-texto" style="display: none;"&gt;
+  Este é um guia passo a passo para usar o site.
+&lt;/div&gt;
+
+JavaScript:
+function mostrarTutorial() {
+  document.getElementById("tutorial-texto").style.display = "block";
+}
+      </pre>
+    </div>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
