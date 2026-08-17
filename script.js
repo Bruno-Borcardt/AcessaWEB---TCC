@@ -9,17 +9,24 @@ function diminuirFonte() {
 
 // Temporizador ajustável
 let tempoRestante = 30;
-let intervalo = setInterval(contagem, 1000);
+let intervalo;
+
+if (document.getElementById("tempo")) {
+    intervalo = setInterval(contagem, 1000);
+}
 
 function reiniciarTempo() {
     tempoRestante = 30;
-    document.getElementById("tempo").innerText = tempoRestante;
+    const tempo = document.getElementById("tempo");
+    if (tempo) tempo.innerText = tempoRestante;
 }
 
 function contagem() {
+    const tempo = document.getElementById("tempo");
+    if (!tempo) return;
     if (tempoRestante > 0) {
         tempoRestante--;
-        document.getElementById("tempo").innerText = tempoRestante;
+        tempo.innerText = tempoRestante;
     }
 }
 
@@ -28,6 +35,7 @@ function pausarTempo() {
 }
 
 function retomarTempo() {
+    clearInterval(intervalo);
     intervalo = setInterval(contagem, 1000);
 }
 
@@ -186,21 +194,53 @@ const toggleSidebarBtn = document.getElementById("toggleSidebar");
 const sidebar = document.querySelector(".sidebar");
 
 if (toggleSidebarBtn && sidebar) {
+  if (!sidebar.id) sidebar.id = "menu-principal";
+  toggleSidebarBtn.setAttribute("aria-controls", sidebar.id);
+  toggleSidebarBtn.setAttribute("aria-expanded", "false");
+
   toggleSidebarBtn.addEventListener("click", function () {
     sidebar.classList.toggle("active");
+    const aberto = sidebar.classList.contains("active");
+    toggleSidebarBtn.setAttribute("aria-expanded", String(aberto));
+    toggleSidebarBtn.setAttribute("aria-label", aberto ? "Fechar menu de navegação" : "Abrir menu de navegação");
   });
 
   function handleResize() {
     if (window.innerWidth > 768) {
       sidebar.classList.remove("active");
-      sidebar.style.left = "0";
-    } else {
-      sidebar.style.left = "";
+      toggleSidebarBtn.setAttribute("aria-expanded", "false");
     }
   }
 
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && sidebar.classList.contains("active")) {
+      sidebar.classList.remove("active");
+      toggleSidebarBtn.setAttribute("aria-expanded", "false");
+      toggleSidebarBtn.focus();
+    }
+  });
+
+  sidebar.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      if (window.innerWidth <= 768) {
+        sidebar.classList.remove("active");
+        toggleSidebarBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+
   window.addEventListener("resize", handleResize);
   window.addEventListener("DOMContentLoaded", handleResize);
+}
+
+const conteudoPrincipal = document.querySelector("main.content");
+if (conteudoPrincipal && !document.querySelector(".skip-link")) {
+  if (!conteudoPrincipal.id) conteudoPrincipal.id = "conteudo-principal";
+  const atalho = document.createElement("a");
+  atalho.className = "skip-link";
+  atalho.href = "#" + conteudoPrincipal.id;
+  atalho.textContent = "Pular para o conteúdo";
+  document.body.prepend(atalho);
 }
 
 
