@@ -7,7 +7,7 @@
   <title>AcessaWEB | Acessibilidade Digital para Idosos</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .home { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(260px,.55fr); align-items:center; gap:clamp(2rem,7vw,8rem); min-height:calc(100vh - 12rem); margin:0 -6vw; padding:clamp(2rem,6vw,5rem); border-radius:0 0 2rem 2rem; background:#171719; }
+    .home { display:grid; grid-template-columns:minmax(0,1fr) minmax(290px,.7fr); align-items:center; gap:clamp(2rem,6vw,6rem); min-height:calc(100vh - 12rem); margin:0 -6vw; padding:clamp(2rem,6vw,5rem); border-radius:0 0 2rem 2rem; background:#171719; }
     .home__eyebrow { margin-bottom:1.25rem; color:#d7fa57; font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
     .home__title { max-width:12ch; margin-bottom:1.5rem; }
     .home__title { color:#fff; }
@@ -16,11 +16,14 @@
     .home__link { display:inline-block; margin-left:.8rem; padding:.6rem; color:#d7fa57; font-size:.92rem; font-weight:700; text-underline-offset:4px; }
     .home__actions .botao-explorar { border-color:#d7fa57; background:#d7fa57; color:#171719; }
     .home__actions .botao-explorar:hover { border-color:#fff; background:#fff; }
-    .home__panel { padding:clamp(1.5rem,4vw,2.4rem); border:0; border-radius:1.25rem; background:#d7fa57; color:#171719; box-shadow:none; }
-    .home__panel h2 { margin-bottom:1.4rem; color:#171719; font-size:clamp(1.7rem,3vw,2.4rem); }
+    .home__visual { position:relative; min-height:430px; }
+    .home__visual > img { width:100%; height:100%; min-height:430px; border-radius:1.5rem; object-fit:cover; object-position:center; filter:grayscale(.15); }
+    .home__panel { position:absolute; right:-1.25rem; bottom:1.5rem; width:min(290px,85%); padding:1.35rem; border:0; border-radius:1.25rem; background:#d7fa57; color:#171719; box-shadow:0 14px 30px rgba(0,0,0,.24); }
+    .home__panel h2 { margin-bottom:1rem; color:#171719; font-size:1.55rem; }
     .home__list { display:grid; gap:1.1rem; margin:0; padding:0; list-style:none; }
     .home__list li { position:relative; padding-left:1.6rem; color:#252525; font-size:.94rem; }
     .home__list li::before { content:"↗"; position:absolute; left:0; color:#171719; font-weight:700; }
+    .home__tag { position:absolute; top:1rem; left:1rem; z-index:1; padding:.45rem .7rem; border-radius:.55rem; background:rgba(23,23,25,.9); color:#fff; font-size:.75rem; font-weight:700; }
     .awareness, .practical, .guide-directory { margin-top:clamp(5rem,10vw,9rem); }
     .section-intro { max-width:48rem; margin:0 auto 3rem; text-align:center; }
     .section-intro h2 { margin-bottom:.9rem; }
@@ -41,6 +44,22 @@
     .standard-card:hover { border-color:#171719; color:#111; transform:translateY(-2px); box-shadow:0 10px 22px rgba(0,0,0,.07); }
     .standard-card strong { display:block; margin-bottom:.45rem; font-family:Georgia,"Times New Roman",serif; font-size:1.2rem; font-weight:500; }
     .standard-card span { display:block; color:#616161; font-size:.9rem; line-height:1.55; }
+    .updates-news { display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,.9fr); gap:clamp(1.5rem,4vw,3rem); margin-top:1rem; padding:clamp(1.5rem,4vw,2.5rem); border-radius:1.25rem; background:#e5e7ed; }
+    .updates-news h3 { margin-bottom:1.1rem; }
+    .updates-heading { display:flex; align-items:center; gap:1rem; }
+    .updates-heading img { width:58px; height:58px; object-fit:contain; }
+    .updates-list { margin:0; padding:0; list-style:none; }
+    .updates-list li + li { border-top:1px solid #c7cad2; }
+    .updates-list a { display:grid; grid-template-columns:110px 1fr; gap:1rem; padding:1rem 0; color:#171719; text-decoration:none; }
+    .updates-list a:hover h4 { text-decoration:underline; text-underline-offset:3px; }
+    .updates-list span { color:#747780; font-size:.75rem; }
+    .updates-list h4 { margin:.2rem 0 .3rem; font-size:1rem; line-height:1.3; }
+    .updates-list p { margin:0; color:#60636a; font-size:.84rem; line-height:1.45; }
+    .updates-feature { position:relative; min-height:360px; overflow:hidden; border-radius:1rem; background:#171719; color:#fff; }
+    .updates-feature img { width:100%; height:100%; object-fit:cover; opacity:.48; }
+    .updates-feature div { position:absolute; right:0; bottom:0; left:0; padding:1.5rem; background:linear-gradient(transparent,rgba(0,0,0,.88)); }
+    .updates-feature span { font-size:.78rem; color:#d7fa57; font-weight:700; }
+    .updates-feature h3 { margin:.45rem 0 0; color:#fff; font-size:clamp(1.5rem,2.8vw,2.2rem); }
     .practice-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
     .practice-card { display:block; min-height:100%; padding:1.5rem; border:1px solid #dedfd9; border-radius:1rem; background:#fff; color:#111; text-decoration:none; }
     .practice-card:nth-child(2), .practice-card:nth-child(4) { background:#f1edf9; }
@@ -48,6 +67,7 @@
     .practice-card__number { display:inline-flex; width:2rem; height:2rem; align-items:center; justify-content:center; margin-bottom:1.75rem; border-radius:.55rem; background:#171719; color:#d7fa57; font-size:.8rem; font-weight:700; }
     .practice-card h3 { margin-bottom:.7rem; font-size:1.45rem; }
     .practice-card p { color:#616161; font-size:.93rem; }
+    .practice-card__image { width:calc(100% + 3rem); height:140px; margin:-1.5rem -1.5rem 1.25rem; border-radius:1rem 1rem 0 0; object-fit:cover; filter:saturate(.85); }
     .guide-directory { padding-top:4rem; border-top:1px solid #dedfd9; }
     .guide-directory__heading { display:flex; align-items:end; justify-content:space-between; gap:2rem; margin-bottom:2rem; }
     .guide-directory__heading p { margin:0; color:#616161; }
@@ -55,7 +75,7 @@
     .guide-grid a { display:flex; align-items:center; justify-content:space-between; min-height:68px; padding:1rem 1.1rem; border:1px solid #dedfd9; border-radius:1rem; background:#fff; color:#111; font-weight:700; text-decoration:none; }
     .guide-grid a::after { content:"↗"; color:#777; font-size:1.1rem; }
     .guide-grid a:hover { border-color:#a475f4; background:#a475f4; color:#111; }
-    @media (max-width:850px) { .home { grid-template-columns:1fr; min-height:auto; } .home__title { max-width:16ch; } .awareness__feature { grid-template-columns:1fr; } .awareness__image { height:360px; } .standards, .practice-grid { grid-template-columns:repeat(2,1fr); } .guide-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:850px) { .home { grid-template-columns:1fr; min-height:auto; } .home__title { max-width:16ch; } .home__visual { min-height:350px; } .home__visual > img { min-height:350px; } .awareness__feature { grid-template-columns:1fr; } .awareness__image { height:360px; } .standards, .practice-grid { grid-template-columns:repeat(2,1fr); } .updates-news { grid-template-columns:1fr; } .guide-grid { grid-template-columns:repeat(2,1fr); } }
     @media (max-width:850px) { .home { grid-template-columns:1fr; min-height:auto; } .home__title { max-width:16ch; } }
     @media (max-width:480px) { .home__link { display:block; width:max-content; margin:.5rem 0 0; } }
     @media (max-width:560px) { .home { margin:0 -1.25rem; } .standards, .practice-grid, .guide-grid { grid-template-columns:1fr; } .freire-quote { grid-template-columns:1fr; } .freire-quote img { width:120px; } .guide-directory__heading { display:block; } .guide-directory__heading p { margin-top:.75rem; } }
@@ -78,10 +98,14 @@
           <p class="home__lead">O AcessaWEB reúne diretrizes práticas para criar interfaces que respeitam o ritmo, a autonomia e as necessidades das pessoas idosas.</p>
           <div class="home__actions"><a class="botao-explorar botao-grande" href="tipografia.html">Começar pelo guia</a><a class="home__link" href="usabilidade.html">Ver testes de usabilidade</a></div>
         </div>
-        <aside class="home__panel" aria-label="O que você encontrará no guia">
-          <h2>Projetar com clareza</h2>
-          <ul class="home__list"><li>Textos fáceis de ler e compreender</li><li>Controles com bom contraste e tamanho confortável</li><li>Prevenção de erros em tarefas importantes</li><li>Recursos para diferentes necessidades de acesso</li></ul>
-        </aside>
+        <div class="home__visual" aria-label="Pessoa idosa utilizando tecnologia com autonomia">
+          <span class="home__tag">Acessibilidade digital</span>
+          <img src="imagem/conscientizacao.png" alt="Pessoa idosa sorrindo enquanto utiliza um notebook ao ar livre">
+          <aside class="home__panel" aria-label="O que você encontrará no guia">
+            <h2>Projetar com clareza</h2>
+            <ul class="home__list"><li>Textos fáceis de ler e compreender</li><li>Controles com bom contraste e tamanho confortável</li><li>Prevenção de erros em tarefas importantes</li></ul>
+          </aside>
+        </div>
       </section>
 
       <section id="conscientizacao" class="awareness" aria-labelledby="titulo-conscientizacao">
@@ -110,6 +134,20 @@
           <a class="standard-card" href="https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/acessibilidade-digital/modelo-de-acessibilidade" target="_blank" rel="noopener noreferrer"><strong>eMAG 3.1</strong><span>Modelo brasileiro de recomendações para padronizar a acessibilidade de sítios e portais digitais.</span></a>
           <a class="standard-card" href="https://caubr.gov.br/norma-tecnica-da-abnt-auxilia-profissionais-a-promover-acessibilidade-no-pais/" target="_blank" rel="noopener noreferrer"><strong>ABNT NBR 9050</strong><span>Norma técnica com parâmetros de acessibilidade para edificações, mobiliário, espaços e equipamentos urbanos.</span></a>
         </div>
+        <div class="updates-news" aria-labelledby="titulo-atualizacoes">
+          <div>
+            <div class="updates-heading"><img src="imagem/atualizacoes.png" alt="Ilustração de megafone amarelo"><h3 id="titulo-atualizacoes">Atualizações em destaque</h3></div>
+            <ul class="updates-list">
+              <li><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm" target="_blank" rel="noopener noreferrer"><span>LEGISLAÇÃO</span><div><h4>Lei Brasileira de Inclusão e acessibilidade digital</h4><p>Consulte o texto oficial da Lei nº 13.146/2015 e suas diretrizes para ambientes digitais.</p></div></a></li>
+              <li><a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer"><span>PADRÃO W3C</span><div><h4>WCAG 2.2: critérios para uma web mais acessível</h4><p>Recomendações internacionais para conteúdo perceptível, operável, compreensível e robusto.</p></div></a></li>
+              <li><a href="https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/acessibilidade-digital/modelo-de-acessibilidade" target="_blank" rel="noopener noreferrer"><span>GOVERNO DIGITAL</span><div><h4>eMAG 3.1: modelo brasileiro de acessibilidade</h4><p>Conheça o conjunto de recomendações para serviços e portais públicos digitais.</p></div></a></li>
+            </ul>
+          </div>
+          <a class="updates-feature" href="https://caubr.gov.br/norma-tecnica-da-abnt-auxilia-profissionais-a-promover-acessibilidade-no-pais/" target="_blank" rel="noopener noreferrer">
+            <img src="imagem/normativas.png" alt="Escultura clássica representando a importância das normas">
+            <div><span>NORMA TÉCNICA</span><h3>ABNT NBR 9050 e a construção de ambientes acessíveis</h3></div>
+          </a>
+        </div>
       </section>
 
       <section id="ambientes-inclusivos" class="practical" aria-labelledby="titulo-ambientes">
@@ -118,10 +156,10 @@
           <p>Descubra ações práticas e concretas para criar experiências digitais verdadeiramente inclusivas e acessíveis em diferentes contextos.</p>
         </div>
         <div class="practice-grid">
-          <a class="practice-card" href="tipografia.html"><span class="practice-card__number">01</span><h3>Leitura</h3><p>Use tipografia confortável, linguagem simples e conteúdos organizados para diminuir o esforço de compreensão.</p></a>
-          <a class="practice-card" href="teclado.html"><span class="practice-card__number">02</span><h3>Navegação</h3><p>Garanta foco visível, navegação por teclado e controles fáceis de localizar em cada etapa.</p></a>
-          <a class="practice-card" href="erros.html"><span class="practice-card__number">03</span><h3>Segurança</h3><p>Previna erros com instruções objetivas, confirmações claras e caminhos simples para corrigir ações.</p></a>
-          <a class="practice-card" href="tecnologia.html"><span class="practice-card__number">04</span><h3>Autonomia</h3><p>Compatibilize o conteúdo com tecnologias assistivas e permita que cada pessoa escolha como interagir.</p></a>
+          <a class="practice-card" href="tipografia.html"><img class="practice-card__image" src="imagem/leitura-braille.png" alt="Mãos lendo uma página em braille"><span class="practice-card__number">01</span><h3>Leitura</h3><p>Use tipografia confortável, linguagem simples e conteúdos organizados para diminuir o esforço de compreensão.</p></a>
+          <a class="practice-card" href="teclado.html"><img class="practice-card__image" src="imagem/background.jpg" alt="Pessoa idosa utilizando tablet"><span class="practice-card__number">02</span><h3>Navegação</h3><p>Garanta foco visível, navegação por teclado e controles fáceis de localizar em cada etapa.</p></a>
+          <a class="practice-card" href="erros.html"><img class="practice-card__image" src="imagem/conscientizacao.png" alt="Pessoa idosa usando notebook ao ar livre"><span class="practice-card__number">03</span><h3>Segurança</h3><p>Previna erros com instruções objetivas, confirmações claras e caminhos simples para corrigir ações.</p></a>
+          <a class="practice-card" href="tecnologia.html"><img class="practice-card__image" src="imagem/autonomia-cadeira-rodas.png" alt="Pessoa em cadeira de rodas lendo um livro"><span class="practice-card__number">04</span><h3>Autonomia</h3><p>Compatibilize o conteúdo com tecnologias assistivas e permita que cada pessoa escolha como interagir.</p></a>
         </div>
       </section>
 
