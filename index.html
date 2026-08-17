@@ -7,22 +7,25 @@
   <title>AcessaWEB | Acessibilidade Digital para Idosos</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .home { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(260px,.55fr); align-items:center; gap:clamp(2rem,7vw,8rem); min-height:calc(100vh - 12rem); }
-    .home__eyebrow { margin-bottom:1.25rem; color:#696969; font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    .home { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(260px,.55fr); align-items:center; gap:clamp(2rem,7vw,8rem); min-height:calc(100vh - 12rem); margin:0 -6vw; padding:clamp(2rem,6vw,5rem); border-radius:0 0 2rem 2rem; background:#171719; }
+    .home__eyebrow { margin-bottom:1.25rem; color:#d7fa57; font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
     .home__title { max-width:12ch; margin-bottom:1.5rem; }
-    .home__lead { max-width:50ch; color:#616161; font-size:1rem; line-height:1.7; }
+    .home__title { color:#fff; }
+    .home__lead { max-width:50ch; color:#d0d0cd; font-size:1rem; line-height:1.7; }
     .home__actions { margin-top:1.9rem; }
-    .home__link { display:inline-block; margin-left:.8rem; padding:.6rem; color:#111; font-size:.92rem; font-weight:700; text-underline-offset:4px; }
-    .home__panel { padding:clamp(1.5rem,4vw,2.4rem); border:1px solid #202020; border-radius:1rem; background:#161616; color:#f5f5f0; box-shadow:0 18px 45px rgba(0,0,0,.12); }
-    .home__panel h2 { margin-bottom:1.4rem; color:#fff; font-size:clamp(1.7rem,3vw,2.4rem); }
+    .home__link { display:inline-block; margin-left:.8rem; padding:.6rem; color:#d7fa57; font-size:.92rem; font-weight:700; text-underline-offset:4px; }
+    .home__actions .botao-explorar { border-color:#d7fa57; background:#d7fa57; color:#171719; }
+    .home__actions .botao-explorar:hover { border-color:#fff; background:#fff; }
+    .home__panel { padding:clamp(1.5rem,4vw,2.4rem); border:0; border-radius:1.25rem; background:#d7fa57; color:#171719; box-shadow:none; }
+    .home__panel h2 { margin-bottom:1.4rem; color:#171719; font-size:clamp(1.7rem,3vw,2.4rem); }
     .home__list { display:grid; gap:1.1rem; margin:0; padding:0; list-style:none; }
-    .home__list li { position:relative; padding-left:1.6rem; color:#d3d3ce; font-size:.94rem; }
-    .home__list li::before { content:"↗"; position:absolute; left:0; color:#fff; font-weight:700; }
+    .home__list li { position:relative; padding-left:1.6rem; color:#252525; font-size:.94rem; }
+    .home__list li::before { content:"↗"; position:absolute; left:0; color:#171719; font-weight:700; }
     .awareness, .practical, .guide-directory { margin-top:clamp(5rem,10vw,9rem); }
     .section-intro { max-width:48rem; margin:0 auto 3rem; text-align:center; }
     .section-intro h2 { margin-bottom:.9rem; }
     .section-intro p { margin:0 auto; color:#616161; }
-    .awareness__feature { display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,.9fr); overflow:hidden; border:1px solid #e7e7e3; border-radius:1rem; background:#fbfbfa; }
+    .awareness__feature { display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,.9fr); overflow:hidden; border:1px solid #dedfd9; border-radius:1.25rem; background:#fff; }
     .awareness__copy { padding:clamp(1.5rem,4vw,3rem); }
     .awareness__copy p { color:#555; }
     .awareness__quote { margin:1.5rem 0 0; padding-left:1rem; border-left:2px solid #111; font-family:Georgia,"Times New Roman",serif; font-size:1.25rem; line-height:1.45; }
@@ -33,27 +36,29 @@
     .freire-quote figcaption { margin-top:1rem; color:#c9c9c4; font-size:.9rem; }
     .freire-quote figcaption a { color:#fff; text-underline-offset:3px; }
     .standards { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1rem; }
-    .standard-card { display:block; min-height:100%; padding:1.35rem; border:1px solid #e7e7e3; border-radius:.75rem; background:#fff; color:#111; text-decoration:none; transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease; }
-    .standard-card:hover { border-color:#9e9e98; color:#111; transform:translateY(-2px); box-shadow:0 10px 22px rgba(0,0,0,.07); }
+    .standard-card { display:block; min-height:100%; padding:1.35rem; border:1px solid #dedfd9; border-radius:1rem; background:#fff; color:#111; text-decoration:none; transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease; }
+    .standard-card:nth-child(2) { background:#a475f4; border-color:#a475f4; } .standard-card:nth-child(2) span { color:#292532; }
+    .standard-card:hover { border-color:#171719; color:#111; transform:translateY(-2px); box-shadow:0 10px 22px rgba(0,0,0,.07); }
     .standard-card strong { display:block; margin-bottom:.45rem; font-family:Georgia,"Times New Roman",serif; font-size:1.2rem; font-weight:500; }
     .standard-card span { display:block; color:#616161; font-size:.9rem; line-height:1.55; }
     .practice-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
-    .practice-card { display:block; min-height:100%; padding:1.5rem; border:1px solid #e7e7e3; border-radius:.75rem; background:#fff; color:#111; text-decoration:none; }
-    .practice-card:hover { border-color:#111; color:#111; }
-    .practice-card__number { display:inline-flex; width:2rem; height:2rem; align-items:center; justify-content:center; margin-bottom:1.75rem; border-radius:50%; background:#111; color:#fff; font-size:.8rem; font-weight:700; }
+    .practice-card { display:block; min-height:100%; padding:1.5rem; border:1px solid #dedfd9; border-radius:1rem; background:#fff; color:#111; text-decoration:none; }
+    .practice-card:nth-child(2), .practice-card:nth-child(4) { background:#f1edf9; }
+    .practice-card:hover { border-color:#171719; color:#111; transform:translateY(-2px); }
+    .practice-card__number { display:inline-flex; width:2rem; height:2rem; align-items:center; justify-content:center; margin-bottom:1.75rem; border-radius:.55rem; background:#171719; color:#d7fa57; font-size:.8rem; font-weight:700; }
     .practice-card h3 { margin-bottom:.7rem; font-size:1.45rem; }
     .practice-card p { color:#616161; font-size:.93rem; }
-    .guide-directory { padding-top:4rem; border-top:1px solid #e7e7e3; }
+    .guide-directory { padding-top:4rem; border-top:1px solid #dedfd9; }
     .guide-directory__heading { display:flex; align-items:end; justify-content:space-between; gap:2rem; margin-bottom:2rem; }
     .guide-directory__heading p { margin:0; color:#616161; }
     .guide-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; }
-    .guide-grid a { display:flex; align-items:center; justify-content:space-between; min-height:68px; padding:1rem 1.1rem; border:1px solid #e7e7e3; border-radius:.65rem; background:#fff; color:#111; font-weight:700; text-decoration:none; }
+    .guide-grid a { display:flex; align-items:center; justify-content:space-between; min-height:68px; padding:1rem 1.1rem; border:1px solid #dedfd9; border-radius:1rem; background:#fff; color:#111; font-weight:700; text-decoration:none; }
     .guide-grid a::after { content:"↗"; color:#777; font-size:1.1rem; }
-    .guide-grid a:hover { border-color:#111; color:#111; }
+    .guide-grid a:hover { border-color:#a475f4; background:#a475f4; color:#111; }
     @media (max-width:850px) { .home { grid-template-columns:1fr; min-height:auto; } .home__title { max-width:16ch; } .awareness__feature { grid-template-columns:1fr; } .awareness__image { height:360px; } .standards, .practice-grid { grid-template-columns:repeat(2,1fr); } .guide-grid { grid-template-columns:repeat(2,1fr); } }
     @media (max-width:850px) { .home { grid-template-columns:1fr; min-height:auto; } .home__title { max-width:16ch; } }
     @media (max-width:480px) { .home__link { display:block; width:max-content; margin:.5rem 0 0; } }
-    @media (max-width:560px) { .standards, .practice-grid, .guide-grid { grid-template-columns:1fr; } .freire-quote { grid-template-columns:1fr; } .freire-quote img { width:120px; } .guide-directory__heading { display:block; } .guide-directory__heading p { margin-top:.75rem; } }
+    @media (max-width:560px) { .home { margin:0 -1.25rem; } .standards, .practice-grid, .guide-grid { grid-template-columns:1fr; } .freire-quote { grid-template-columns:1fr; } .freire-quote img { width:120px; } .guide-directory__heading { display:block; } .guide-directory__heading p { margin-top:.75rem; } }
   </style>
 </head>
 <body>

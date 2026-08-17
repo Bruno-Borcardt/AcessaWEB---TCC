@@ -243,6 +243,14 @@ if (conteudoPrincipal && !document.querySelector(".skip-link")) {
   document.body.prepend(atalho);
 }
 
+if (conteudoPrincipal && !document.querySelector(".home") && !document.querySelector(".return-to-guide")) {
+  const voltarAoGuia = document.createElement("a");
+  voltarAoGuia.className = "return-to-guide";
+  voltarAoGuia.href = "index.html";
+  voltarAoGuia.innerHTML = "<span aria-hidden=\"true\">←</span> Voltar ao guia";
+  conteudoPrincipal.prepend(voltarAoGuia);
+}
+
 
 
 
