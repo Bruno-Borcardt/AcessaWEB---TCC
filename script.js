@@ -233,7 +233,156 @@ if (toggleSidebarBtn && sidebar) {
   window.addEventListener("DOMContentLoaded", handleResize);
 }
 
+function aprimorarMenu() {
+  if (!sidebar || sidebar.querySelector(".menu-search")) return;
+  const lista = sidebar.querySelector("ul");
+  if (!lista) return;
+  const busca = document.createElement("label");
+  busca.className = "menu-search";
+  busca.innerHTML = "<span aria-hidden=\"true\">⌕</span><input type=\"search\" placeholder=\"Buscar um tema\" aria-label=\"Buscar tema no menu\">";
+  const campo = busca.querySelector("input");
+  const vazio = document.createElement("li");
+  vazio.className = "menu-empty";
+  vazio.textContent = "Nenhum tema encontrado.";
+  vazio.hidden = true;
+  lista.after(busca);
+  busca.after(lista);
+  lista.append(vazio);
+
+  campo.addEventListener("input", () => {
+    const termo = campo.value.trim().toLocaleLowerCase("pt-BR");
+    let encontrados = 0;
+    lista.querySelectorAll("li:not(.menu-empty)").forEach((item) => {
+      const mostrar = item.textContent.toLocaleLowerCase("pt-BR").includes(termo);
+      item.hidden = !mostrar;
+      if (mostrar) encontrados++;
+    });
+    vazio.hidden = encontrados !== 0;
+  });
+}
+
+function adicionarProgressoLeitura() {
+  if (document.querySelector(".reading-progress")) return;
+  const progresso = document.createElement("div");
+  progresso.className = "reading-progress";
+  progresso.setAttribute("aria-hidden", "true");
+  document.body.append(progresso);
+  const atualizar = () => {
+    const altura = document.documentElement.scrollHeight - window.innerHeight;
+    const porcentagem = altura > 0 ? Math.min(100, (window.scrollY / altura) * 100) : 0;
+    progresso.style.width = porcentagem + "%";
+  };
+  window.addEventListener("scroll", atualizar, { passive: true });
+  window.addEventListener("resize", atualizar);
+  atualizar();
+}
+
+aprimorarMenu();
+adicionarProgressoLeitura();
+
+function criarInteracoesInicio() {
+  const filtros = document.querySelectorAll("[data-news-filter]");
+  const noticias = document.querySelectorAll("[data-news]");
+  filtros.forEach((filtro) => {
+    filtro.addEventListener("click", () => {
+      const categoria = filtro.dataset.newsFilter;
+      filtros.forEach((item) => item.setAttribute("aria-pressed", String(item === filtro)));
+      noticias.forEach((noticia) => {
+        noticia.hidden = categoria !== "todos" && noticia.dataset.news !== categoria;
+      });
+    });
+  });
+
+  const buscaGuia = document.getElementById("busca-guia");
+  const linksGuia = document.querySelectorAll(".guide-grid a");
+  const guiaVazio = document.querySelector(".guide-empty");
+  if (buscaGuia && linksGuia.length) {
+    buscaGuia.addEventListener("input", () => {
+      const termo = buscaGuia.value.trim().toLocaleLowerCase("pt-BR");
+      let encontrados = 0;
+      linksGuia.forEach((link) => {
+        const mostrar = link.textContent.toLocaleLowerCase("pt-BR").includes(termo);
+        link.hidden = !mostrar;
+        if (mostrar) encontrados++;
+      });
+      if (guiaVazio) guiaVazio.hidden = encontrados !== 0;
+    });
+  }
+}
+
+criarInteracoesInicio();
+
+function lerDados(chave, padrao) {
+  try { return JSON.parse(localStorage.getItem(chave) || JSON.stringify(padrao)); } catch { return padrao; }
+}
+
+function salvarVisitaAtual() {
+  const pagina = document.querySelector(".sidebar a.active");
+  if (!pagina || pagina.getAttribute("href") === "index.html") return;
+  const recentes = lerDados("acessaweb-recentes", []);
+  const item = { titulo: pagina.textContent.trim(), href: pagina.getAttribute("href") };
+  const atualizados = [item, ...recentes.filter((registro) => registro.href !== item.href)].slice(0, 3);
+  localStorage.setItem("acessaweb-recentes", JSON.stringify(atualizados));
+}
+
 const conteudoPrincipal = document.querySelector("main.content");
+
+function criarContextoDoTopico() {
+  if (!conteudoPrincipal || document.querySelector(".home") || document.querySelector(".page-context")) return;
+  const links = [...document.querySelectorAll(".sidebar a")];
+  const atual = document.querySelector(".sidebar a.active");
+  const indice = links.indexOf(atual);
+  const proximo = links[indice + 1] || links[1];
+  const contexto = document.createElement("div");
+  contexto.className = "page-context";
+  contexto.innerHTML = `<span class="page-context__meta">Biblioteca de diretrizes · ${Math.max(1, indice)} de ${Math.max(1, links.length - 1)}</span>`;
+  const favorito = document.createElement("button");
+  favorito.type = "button";
+  favorito.className = "favorite-topic";
+  favorito.textContent = "Adicionar aos favoritos";
+  const hrefAtual = atual?.getAttribute("href");
+  const favoritos = lerDados("acessaweb-favoritos", []);
+  favorito.setAttribute("aria-pressed", String(favoritos.includes(hrefAtual)));
+  if (favoritos.includes(hrefAtual)) favorito.textContent = "Nos favoritos";
+  favorito.addEventListener("click", () => {
+    const lista = lerDados("acessaweb-favoritos", []);
+    const existe = lista.includes(hrefAtual);
+    const atualizada = existe ? lista.filter((item) => item !== hrefAtual) : [...lista, hrefAtual];
+    localStorage.setItem("acessaweb-favoritos", JSON.stringify(atualizada));
+    favorito.setAttribute("aria-pressed", String(!existe));
+    favorito.textContent = existe ? "Adicionar aos favoritos" : "Nos favoritos";
+  });
+  contexto.append(favorito);
+  conteudoPrincipal.prepend(contexto);
+  if (proximo) {
+    const proximaEtapa = document.createElement("section");
+    proximaEtapa.className = "page-next";
+    proximaEtapa.innerHTML = `<div><small>PRÓXIMO TÓPICO</small><strong>${proximo.textContent.trim()}</strong></div><a href="${proximo.getAttribute("href")}">Continuar →</a>`;
+    conteudoPrincipal.append(proximaEtapa);
+  }
+}
+
+function preencherPainelPessoal() {
+  const recentes = lerDados("acessaweb-recentes", []);
+  const favoritos = lerDados("acessaweb-favoritos", []);
+  const listaRecente = document.getElementById("recentes-lista");
+  const listaFavoritos = document.getElementById("favoritos-lista");
+  const links = [...document.querySelectorAll(".guide-grid a")];
+  const porHref = new Map(links.map((link) => [link.getAttribute("href"), link.textContent.trim()]));
+  if (listaRecente) {
+    listaRecente.innerHTML = recentes.length ? recentes.map((item) => `<a href="${item.href}">${item.titulo}<span>Continuar →</span></a>`).join("") : "<p>Ao abrir um tema, ele aparecerá aqui para facilitar sua continuidade.</p>";
+  }
+  if (listaFavoritos) {
+    listaFavoritos.innerHTML = favoritos.length ? favoritos.map((href) => `<a href="${href}">${porHref.get(href) || "Tema salvo"}<span>Abrir →</span></a>`).join("") : "<p>Use o botão de favoritos dentro de qualquer tópico para criar seus atalhos.</p>";
+  }
+}
+
+lerDados("acessaweb-preferencias", []);
+lerDados("acessaweb-recentes", []);
+salvarVisitaAtual();
+criarContextoDoTopico();
+preencherPainelPessoal();
+
 if (conteudoPrincipal && !document.querySelector(".skip-link")) {
   if (!conteudoPrincipal.id) conteudoPrincipal.id = "conteudo-principal";
   const atalho = document.createElement("a");
@@ -250,6 +399,101 @@ if (conteudoPrincipal && !document.querySelector(".home") && !document.querySele
   voltarAoGuia.innerHTML = "<span aria-hidden=\"true\">←</span> Voltar ao guia";
   conteudoPrincipal.prepend(voltarAoGuia);
 }
+
+function criarPainelAcessibilidade() {
+  if (document.querySelector(".accessibility-toggle")) return;
+
+  const opcoes = [
+    ["fonte-grande", "Texto maior", "Aumentar o tamanho do texto"],
+    ["fonte-extra-grande", "Texto extra grande", "Usar texto extra grande"],
+    ["espacamento-ampliado", "Mais espaçamento", "Aumentar o espaçamento entre linhas e letras"],
+    ["alto-contraste", "Alto contraste", "Ativar alto contraste"],
+    ["modo-leitura", "Modo leitura", "Usar fundo e texto pensados para leitura prolongada"],
+    ["movimento-reduzido", "Reduzir movimento", "Desativar animações e transições"],
+  ];
+  let preferenciasSalvas = [];
+  try {
+    preferenciasSalvas = JSON.parse(localStorage.getItem("acessaweb-preferencias") || "[]");
+  } catch {
+    localStorage.removeItem("acessaweb-preferencias");
+  }
+  preferenciasSalvas.forEach((classe) => document.body.classList.add(classe));
+
+  const botao = document.createElement("button");
+  botao.type = "button";
+  botao.className = "accessibility-toggle";
+  botao.setAttribute("aria-expanded", "false");
+  botao.setAttribute("aria-controls", "painel-acessibilidade");
+  botao.textContent = "Acessibilidade";
+
+  const painel = document.createElement("section");
+  painel.id = "painel-acessibilidade";
+  painel.className = "accessibility-panel";
+  painel.hidden = true;
+  painel.setAttribute("aria-label", "Opções de acessibilidade");
+  painel.innerHTML = "<h2>Personalize sua navegação</h2><p>Escolha as opções que deixam a leitura mais confortável.</p><div class=\"accessibility-actions\"></div>";
+  const acoes = painel.querySelector(".accessibility-actions");
+
+  function salvarPreferencias() {
+    const ativas = opcoes.map(([classe]) => classe).filter((classe) => document.body.classList.contains(classe));
+    localStorage.setItem("acessaweb-preferencias", JSON.stringify(ativas));
+  }
+
+  opcoes.forEach(([classe, rotulo, descricao]) => {
+    const controle = document.createElement("button");
+    controle.type = "button";
+    controle.textContent = rotulo;
+    controle.title = descricao;
+    controle.setAttribute("aria-pressed", String(document.body.classList.contains(classe)));
+    controle.addEventListener("click", () => {
+      if (classe === "fonte-grande" && document.body.classList.contains("fonte-extra-grande")) document.body.classList.remove("fonte-extra-grande");
+      if (classe === "fonte-extra-grande" && document.body.classList.contains("fonte-grande")) document.body.classList.remove("fonte-grande");
+      document.body.classList.toggle(classe);
+      painel.querySelectorAll("button[data-classe]").forEach((item) => item.setAttribute("aria-pressed", String(document.body.classList.contains(item.dataset.classe))));
+      salvarPreferencias();
+    });
+    controle.dataset.classe = classe;
+    acoes.append(controle);
+  });
+
+  const ouvir = document.createElement("button");
+  ouvir.type = "button";
+  ouvir.textContent = "Ouvir esta página";
+  ouvir.addEventListener("click", () => {
+    if (!("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const mensagem = new SpeechSynthesisUtterance((document.querySelector("main.content") || document.body).innerText);
+    mensagem.lang = "pt-BR";
+    window.speechSynthesis.speak(mensagem);
+  });
+  acoes.append(ouvir);
+
+  const resetar = document.createElement("button");
+  resetar.type = "button";
+  resetar.className = "accessibility-reset";
+  resetar.textContent = "Restaurar preferências";
+  resetar.addEventListener("click", () => {
+    opcoes.forEach(([classe]) => document.body.classList.remove(classe));
+    localStorage.removeItem("acessaweb-preferencias");
+    painel.querySelectorAll("button[data-classe]").forEach((item) => item.setAttribute("aria-pressed", "false"));
+  });
+  acoes.append(resetar);
+
+  botao.addEventListener("click", () => {
+    painel.hidden = !painel.hidden;
+    botao.setAttribute("aria-expanded", String(!painel.hidden));
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !painel.hidden) {
+      painel.hidden = true;
+      botao.setAttribute("aria-expanded", "false");
+      botao.focus();
+    }
+  });
+  document.body.append(botao, painel);
+}
+
+criarPainelAcessibilidade();
 
 
 
