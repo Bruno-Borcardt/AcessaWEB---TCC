@@ -313,14 +313,52 @@ function criarInteracoesInicio() {
 criarInteracoesInicio();
 
 function aplicarImagensDaBiblioteca() {
+  const fotos = {
+    tipografia: ["pexels-ugurlu-photographer-108972-336407.jpg", "Livro aberto com óculos sobre as páginas"],
+    tempo: ["pexels-markusspiske-242204.jpg", "Computador exibindo um relógio digital"],
+    estresse: ["pexels-ann-h-45017-38514396.jpg", "Peça vermelha afastada de um grupo de peças de madeira"],
+    erros: ["pexels-markus-winkler-1430818-19825314.jpg", "Letras de madeira formando a palavra inovação"],
+    seguranca: ["pexels-alex-dos-santos-305643819-20242976.jpg", "Cadeado preso a elos de uma corrente"],
+    responsivo: ["pexels-click-jeth-703137695-18530501.jpg", "Celular exibindo uma página de pesquisa"],
+    personalizacao: ["pexels-ds-stories-6990339.jpg", "Peças coloridas representando pessoas diversas"],
+    inteligencia: ["pexels-bertellifotografia-16094045.jpg", "Pessoa utilizando uma ferramenta de inteligência artificial no computador"],
+    leitura: ["pexels-yankrukov-7694382.jpg", "Pessoa lendo um livro em braille com as mãos"],
+    gestos: ["pexels-anastasia-shuraeva-9501978.jpg", "Mãos de várias pessoas reunidas"],
+    notificacoes: ["pexels-esmerald-34445331.jpg", "Sino dourado suspenso"],
+    teclado: ["pexels-bertellifotografia-30530419.jpg", "Interface digital exibida acima de um teclado"],
+    pagamento: ["pexels-pixabay-256517.jpg", "Livros sobre internet organizados em uma biblioteca"],
+    usabilidade: ["pexels-shvets-production-6980223.jpg", "Mulher em cadeira de rodas utilizando um celular"],
+    servicos: ["pexels-timur-weber-9532000.jpg", "Pessoa solicitando trabalho e alimentação"],
+    experiencia: ["pexels-ai25studio-8790887.jpg", "Casal idoso utilizando um celular junto"],
+    movimentos: ["pexels-daniel-gomez-2158503858-35693313.jpg", "Pessoas em cadeiras de rodas atravessando uma via urbana"],
+    controle: ["pexels-burst-374103.jpg", "Parede com várias câmeras de monitoramento"],
+    auditivo: ["pexels-gustavo-fring-7446747.jpg", "Pessoa percorrendo com as mãos uma página em braille"],
+    tecnologia: ["pexels-eren-li-7188725.jpg", "Pessoa com bengala sobre piso tátil"],
+    dispositivos: ["pexels-pedro-lucca-557027795-35833399.jpg", "Pessoas idosas viajando em transporte coletivo"],
+    fraudes: ["pexels-alex-dos-santos-305643819-20242976.jpg", "Cadeado e corrente representando proteção"],
+    social: ["pexels-guilman-2204305-5939399.jpg", "Pessoas ocupando uma avenida urbana"],
+    frameworks: ["pexels-pavel-danilyuk-7521282.jpg", "Pessoa organizando um diagrama em uma lousa"]
+  };
   const cartoes = [...document.querySelectorAll(".function-card[data-href]")];
   cartoes.forEach((cartao, indice) => {
     const imagem = cartao.querySelector("img");
     if (!imagem) return;
     const nomeArquivo = cartao.dataset.href.replace(/\.html(?:#.*)?$/, "");
-    imagem.src = `imagem/funcoes/${nomeArquivo}.png`;
+    const foto = fotos[nomeArquivo];
+    if (foto) { imagem.src = `imagem/pexels/${foto[0]}`; imagem.alt = foto[1]; }
     imagem.loading = indice === 0 ? "eager" : "lazy";
     imagem.decoding = "async";
+  });
+
+  const imagensGerais = [
+    [".mini img", "pexels-kleison-leopoldino-219870943-36760144.jpg", "Mãos lendo uma página em braille"],
+    [".stage > img", "pexels-ai25studio-8790887.jpg", "Casal idoso utilizando um celular com autonomia"],
+    [".resource[href='leitura.html'] img", "pexels-gustavo-fring-7446747.jpg", "Pessoa lendo um livro em braille"],
+    [".resource[href='movimentos.html'] img", "pexels-shvets-production-6980223.jpg", "Mulher em cadeira de rodas utilizando tecnologia"],
+  ];
+  imagensGerais.forEach(([seletor, arquivo, descricao]) => {
+    const imagem = document.querySelector(seletor);
+    if (imagem) { imagem.src = `imagem/pexels/${arquivo}`; imagem.alt = descricao; }
   });
 }
 
@@ -506,10 +544,3 @@ function criarPainelAcessibilidade() {
   });
   document.body.append(botao, painel);
 }
-
-criarPainelAcessibilidade();
-
-
-
-
-  
