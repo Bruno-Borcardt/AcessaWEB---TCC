@@ -86,7 +86,7 @@
       <!-- Exemplo Prático -->
       <section class="example">
         <h2>Exemplo: Notificação Visual e por Voz</h2>
-        <button class="botao-notificacao" onclick="mostrarNotificacao()" onkeyup="ativarTeclado(event, this)" tabindex="0">
+        <button class="botao-notificacao" type="button" onclick="mostrarNotificacao()">
           Mostrar Notificação
         </button>
         <div id="notificacao" class="notificacao" aria-live="assertive" role="alert">
@@ -118,12 +118,6 @@ function mostrarNotificacao() {
   }, 4000);
 }
 
-function ativarTeclado(e, el) {
-  if (e.key === "Enter" || e.key === " ") {
-    e.preventDefault();
-    el.click();
-  }
-}
 </pre>
       </section>
     </main>
@@ -141,32 +135,6 @@ function ativarTeclado(e, el) {
       }, 4000);
     }
 
-    function ativarTeclado(e, el) {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        el.click();
-      }
-    }
-    const toggleSidebarBtn = document.getElementById("toggleSidebar");
-const sidebar = document.querySelector(".sidebar");
-
-if (toggleSidebarBtn && sidebar) {
-  toggleSidebarBtn.addEventListener("click", function () {
-    sidebar.classList.toggle("active");
-  });
-
-  function handleResize() {
-    if (window.innerWidth > 768) {
-      sidebar.classList.remove("active");
-      sidebar.style.left = "0";
-    } else {
-      sidebar.style.left = "";
-    }
-  }
-
-  window.addEventListener("resize", handleResize);
-  window.addEventListener("DOMContentLoaded", handleResize);
-}
 const conteudoPrincipal = document.querySelector("main.content");
 if (conteudoPrincipal && !document.querySelector(".return-to-guide")) {
   const voltarAoGuia = document.createElement("a");

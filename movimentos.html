@@ -74,10 +74,10 @@
       <!-- Seção de Exemplo Prático -->
       <section class="example">
         <h2>Exemplo: Botões Grandes com Feedback</h2>
-        <button class="botao-grande" onclick="mostrarMensagem(this)" onkeyup="ativarComTeclado(event, this)" tabindex="0">
+        <button class="botao-grande" type="button" onclick="mostrarMensagem(this)">
           Clique Aqui
         </button>
-        <button class="botao-grande" onclick="mostrarMensagem(this)" onkeyup="ativarComTeclado(event, this)" tabindex="0">
+        <button class="botao-grande" type="button" onclick="mostrarMensagem(this)">
           Outra Ação
         </button>
         <div id="mensagem-movimentos" class="mensagem-feedback"></div>
@@ -96,12 +96,6 @@ function mostrarMensagem(el) {
     'Você clicou no botão: "' + el.innerText + '"';
 }
 
-function ativarComTeclado(event, el) {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    el.click();
-  }
-}
 </pre>
       </section>
     </main>
@@ -113,32 +107,6 @@ function ativarComTeclado(event, el) {
         'Você clicou no botão: "' + el.innerText + '"';
     }
 
-    function ativarComTeclado(event, el) {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        el.click();
-      }
-    }
-    const toggleSidebarBtn = document.getElementById("toggleSidebar");
-const sidebar = document.querySelector(".sidebar");
-
-if (toggleSidebarBtn && sidebar) {
-  toggleSidebarBtn.addEventListener("click", function () {
-    sidebar.classList.toggle("active");
-  });
-
-  function handleResize() {
-    if (window.innerWidth > 768) {
-      sidebar.classList.remove("active");
-      sidebar.style.left = "0";
-    } else {
-      sidebar.style.left = "";
-    }
-  }
-
-  window.addEventListener("resize", handleResize);
-  window.addEventListener("DOMContentLoaded", handleResize);
-}
 const conteudoPrincipal = document.querySelector("main.content");
 if (conteudoPrincipal && !document.querySelector(".return-to-guide")) {
   const voltarAoGuia = document.createElement("a");

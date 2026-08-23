@@ -48,7 +48,7 @@
         <!-- Exemplo prático -->
         <div class="example">
             <h2>Exemplo Prático: Confirmação de Exclusão</h2>
-            <button onclick="confirmarExclusao()">Excluir Conta</button>
+            <button type="button" onclick="confirmarExclusao()">Simular exclusão de conta</button>
             <p id="mensagem-erro"></p>
         </div>
 
@@ -57,14 +57,14 @@
             <h2>Código-Fonte Utilizado</h2>
             <pre>
 HTML:
-&lt;button onclick="confirmarExclusao()"&gt;Excluir Conta&lt;/button&gt;
+&lt;button onclick="confirmarExclusao()"&gt;Simular exclusão de conta&lt;/button&gt;
 &lt;p id="mensagem-erro"&gt;&lt;/p&gt;
 
 JavaScript:
 function confirmarExclusao() {
     const confirmacao = confirm("Tem certeza que deseja excluir sua conta?");
     const mensagem = confirmacao
-        ? "Conta excluída com sucesso!"
+        ? "Simulação concluída: a conta seria excluída."
         : "Ação cancelada.";
     document.getElementById("mensagem-erro").innerText = mensagem;
 }

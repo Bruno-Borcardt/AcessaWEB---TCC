@@ -54,7 +54,7 @@ function desativarModoSimples() {
 function confirmarExclusao() {
     const confirmacao = confirm("Tem certeza que deseja excluir sua conta?");
     document.getElementById("mensagem-erro").innerText = confirmacao
-        ? "Conta excluída com sucesso!"
+        ? "Simulação concluída: a conta seria excluída."
         : "Ação cancelada.";
 }
 
@@ -64,7 +64,7 @@ function verificarSenha() {
     const mensagem = document.getElementById("mensagem-seguranca");
   
     if (senha.length >= 6) {
-      mensagem.innerText = "Senha válida!";
+      mensagem.innerText = "A senha de exemplo atende ao tamanho mínimo.";
       mensagem.style.color = "green";
     } else {
       mensagem.innerText = "A senha deve ter pelo menos 6 caracteres.";
@@ -139,7 +139,7 @@ function detectarMovimento() {
 
 // Confirmação de compra
 function confirmarCompra() {
-    document.getElementById("mensagem-pagamento").innerText = "Compra realizada com sucesso!";
+    document.getElementById("mensagem-pagamento").innerText = "Dados de exemplo validados. Nenhuma compra foi realizada.";
 }
 
 // Feedback

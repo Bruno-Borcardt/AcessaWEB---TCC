@@ -49,10 +49,10 @@
       <!-- Seção de Exemplo Prático -->
       <section class="example">
         <h2>Exemplo: Login Seguro</h2>
-        <form onsubmit="event.preventDefault(); verificarSenha();" aria-label="Formulário de Login Seguro">
+        <form onsubmit="event.preventDefault(); verificarSenha();" aria-label="Demonstração de validação de senha">
           <label for="senha">Digite sua senha:</label>
           <input type="password" id="senha" placeholder="Mínimo 6 caracteres" required aria-required="true">
-          <button type="submit">Entrar</button>
+          <button type="submit">Testar senha</button>
         </form>
         <p id="mensagem-seguranca" aria-live="polite"></p>
       </section>
@@ -62,10 +62,10 @@
         <h2>Código-Fonte Utilizado</h2>
         <pre>
 HTML:
-&lt;form onsubmit="event.preventDefault(); verificarSenha();" aria-label="Formulário de Login Seguro"&gt;
+&lt;form onsubmit="event.preventDefault(); verificarSenha();" aria-label="Demonstração de validação de senha"&gt;
   &lt;label for="senha"&gt;Digite sua senha:&lt;/label&gt;
   &lt;input type="password" id="senha" placeholder="Mínimo 6 caracteres" required aria-required="true"&gt;
-  &lt;button type="submit"&gt;Entrar&lt;/button&gt;
+  &lt;button type="submit"&gt;Testar senha&lt;/button&gt;
 &lt;/form&gt;
 &lt;p id="mensagem-seguranca" aria-live="polite"&gt;&lt;/p&gt;
 
@@ -75,7 +75,7 @@ function verificarSenha() {
   const mensagem = document.getElementById("mensagem-seguranca");
 
   if (senha.length >= 6) {
-    mensagem.innerText = "Senha válida!";
+    mensagem.innerText = "A senha de exemplo atende ao tamanho mínimo.";
     mensagem.style.color = "green";
   } else {
     mensagem.innerText = "A senha deve ter pelo menos 6 caracteres.";

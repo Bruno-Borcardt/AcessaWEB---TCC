@@ -70,7 +70,7 @@ body.modo-leitura { background:#fff!important; color:#000!important; font-size:1
 .sidebar a { min-height:42px; padding:.65rem .75rem; border:1px solid #3a3a3e; background:#252528; color:#f7f7f2; }
 .sidebar a:hover { border-color:var(--lima); background:#303034; color:var(--lima); }
 .sidebar a.active { background:var(--lima); border-color:var(--lima); color:#171719; }
-.content { width:100%; max-width:1280px; margin:0 auto; padding:clamp(7.5rem,11vw,9rem) clamp(1.25rem,6vw,6rem) 5rem; }
+.content { width:100%; max-width:1600px; margin:0 auto; padding:clamp(7.5rem,11vw,9rem) clamp(1.25rem,2.5vw,2.5rem) 5rem; }
 .return-to-guide { display:inline-flex; align-items:center; gap:.45rem; margin:0 0 2rem; padding:.6rem .85rem; border:1px solid #dedfd9; border-radius:.7rem; background:#fff; color:#171719; font-size:.9rem; font-weight:700; text-decoration:none; transition:background-color .18s ease,border-color .18s ease,transform .18s ease; }
 .return-to-guide:hover { border-color:var(--lilas); background:#f1edf9; color:#171719; transform:translateX(-2px); }
 

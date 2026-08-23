@@ -90,8 +90,8 @@
           <input type="text" id="cartao" name="cartao" placeholder="0000 0000 0000 0000" aria-label="Número do cartão de crédito" />
         </div>
 
-        <button class="botao-pagamento" onclick="confirmarCompra()" onkeyup="ativarTeclado(event, this)" tabindex="0">
-          Finalizar Compra
+        <button class="botao-pagamento" type="button" onclick="confirmarCompra()">
+          Validar cartão de exemplo
         </button>
 
         <p id="mensagem-pagamento" role="alert" aria-live="polite"></p>
@@ -104,7 +104,7 @@
 HTML:
 &lt;label for="cartao"&gt;Número do Cartão:&lt;/label&gt;
 &lt;input type="text" id="cartao" placeholder="0000 0000 0000 0000"&gt;
-&lt;button onclick="confirmarCompra()"&gt;Finalizar Compra&lt;/button&gt;
+&lt;button onclick="confirmarCompra()"&gt;Validar cartão de exemplo&lt;/button&gt;
 &lt;p id="mensagem-pagamento"&gt;&lt;/p&gt;
 
 JS:
@@ -136,7 +136,7 @@ function confirmarCompra() {
       return;
     }
   
-    const textoSucesso = "Compra realizada com sucesso!";
+    const textoSucesso = "Dados de exemplo validados. Nenhuma compra foi realizada.";
     mensagem.innerText = textoSucesso;
     mensagem.style.color = "#198754";
     const voz = new SpeechSynthesisUtterance(textoSucesso);
@@ -176,31 +176,11 @@ function confirmarCompra() {
     return;
   }
 
-  const textoSucesso = "Compra realizada com sucesso!";
+  const textoSucesso = "Dados de exemplo validados. Nenhuma compra foi realizada.";
   mensagem.innerText = textoSucesso;
   mensagem.style.color = "#198754"; // verde
   const voz = new SpeechSynthesisUtterance(textoSucesso);
   window.speechSynthesis.speak(voz);
-}
-const toggleSidebarBtn = document.getElementById("toggleSidebar");
-const sidebar = document.querySelector(".sidebar");
-
-if (toggleSidebarBtn && sidebar) {
-  toggleSidebarBtn.addEventListener("click", function () {
-    sidebar.classList.toggle("active");
-  });
-
-  function handleResize() {
-    if (window.innerWidth > 768) {
-      sidebar.classList.remove("active");
-      sidebar.style.left = "0";
-    } else {
-      sidebar.style.left = "";
-    }
-  }
-
-  window.addEventListener("resize", handleResize);
-  window.addEventListener("DOMContentLoaded", handleResize);
 }
 const conteudoPrincipal = document.querySelector("main.content");
 if (conteudoPrincipal && !document.querySelector(".return-to-guide")) {

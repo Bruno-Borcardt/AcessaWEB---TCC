@@ -148,26 +148,6 @@ function detectarMovimento() {
         mensagem.innerText = "";
       }
     }
-const toggleSidebarBtn = document.getElementById("toggleSidebar");
-const sidebar = document.querySelector(".sidebar");
-
-if (toggleSidebarBtn && sidebar) {
-  toggleSidebarBtn.addEventListener("click", function () {
-    sidebar.classList.toggle("active");
-  });
-
-  function handleResize() {
-    if (window.innerWidth > 768) {
-      sidebar.classList.remove("active");
-      sidebar.style.left = "0";
-    } else {
-      sidebar.style.left = "";
-    }
-  }
-
-  window.addEventListener("resize", handleResize);
-  window.addEventListener("DOMContentLoaded", handleResize);
-}
 const conteudoPrincipal = document.querySelector("main.content");
 if (conteudoPrincipal && !document.querySelector(".return-to-guide")) {
   const voltarAoGuia = document.createElement("a");
