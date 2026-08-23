@@ -368,7 +368,81 @@ function lerDados(chave, padrao) {
   try { return JSON.parse(localStorage.getItem(chave) || JSON.stringify(padrao)); } catch { return padrao; }
 }
 
+const catalogoTemas = [
+  ["tipografia.html", "Tipografia e textos", "Legibilidade", "pexels-ugurlu-photographer-108972-336407.jpg"],
+  ["tempo.html", "Tempo e interação", "Ritmo", "pexels-markusspiske-242204.jpg"],
+  ["estresse.html", "Redução de estresse", "Conforto", "pexels-ann-h-45017-38514396.jpg"],
+  ["erros.html", "Prevenção de erros", "Clareza", "pexels-markus-winkler-1430818-19825314.jpg"],
+  ["seguranca.html", "Segurança", "Proteção", "pexels-alex-dos-santos-305643819-20242976.jpg"],
+  ["responsivo.html", "Design responsivo", "Adaptação", "pexels-click-jeth-703137695-18530501.jpg"],
+  ["personalizacao.html", "Personalização", "Escolha", "pexels-ds-stories-6990339.jpg"],
+  ["inteligencia.html", "Acessibilidade com IA", "Apoio", "pexels-bertellifotografia-16094045.jpg"],
+  ["leitura.html", "Facilitação de leitura", "Compreensão", "pexels-yankrukov-7694382.jpg"],
+  ["gestos.html", "Suporte a gestos", "Alternativas", "pexels-anastasia-shuraeva-9501978.jpg"],
+  ["notificacoes.html", "Notificações", "Avisos", "pexels-esmerald-34445331.jpg"],
+  ["teclado.html", "Navegação por teclado", "Operação", "pexels-bertellifotografia-30530419.jpg"],
+  ["pagamento.html", "Pagamentos", "Confiança", "pexels-pixabay-256517.jpg"],
+  ["usabilidade.html", "Testes de usabilidade", "Pesquisa", "pexels-shvets-production-6980223.jpg"],
+  ["servicos.html", "Serviços essenciais", "Acesso", "pexels-timur-weber-9532000.jpg"],
+  ["experiencia.html", "Níveis de experiência", "Aprendizado", "pexels-ai25studio-8790887.jpg"],
+  ["movimentos.html", "Suporte a movimentos", "Mobilidade", "pexels-daniel-gomez-2158503858-35693313.jpg"],
+  ["controle.html", "Controle da interface", "Autonomia", "pexels-burst-374103.jpg"],
+  ["auditivo.html", "Recursos auditivos", "Percepção", "pexels-gustavo-fring-7446747.jpg"],
+  ["tecnologia.html", "Tecnologia assistiva", "Compatibilidade", "pexels-eren-li-7188725.jpg"],
+  ["dispositivos.html", "Dispositivos antigos", "Alcance", "pexels-pedro-lucca-557027795-35833399.jpg"],
+  ["fraudes.html", "Proteção contra fraudes", "Prevenção", "pexels-alex-dos-santos-305643819-20242976.jpg"],
+  ["social.html", "Engajamento social", "Participação", "pexels-guilman-2204305-5939399.jpg"],
+  ["frameworks.html", "Frameworks", "Implementação", "pexels-pavel-danilyuk-7521282.jpg"]
+];
+
+function alternarFavorito(href) {
+  const favoritos = lerDados("acessaweb-favoritos", []);
+  const existe = favoritos.includes(href);
+  const atualizados = existe ? favoritos.filter((item) => item !== href) : [...favoritos, href];
+  localStorage.setItem("acessaweb-favoritos", JSON.stringify(atualizados));
+  document.dispatchEvent(new CustomEvent("acessaweb:favoritos", { detail: atualizados }));
+  return !existe;
+}
+
+function criarNavegacaoSalvos() {
+  const menu = document.querySelector(".sidebar ul");
+  if (menu && !menu.querySelector('a[href="salvos.html"]')) {
+    const item = document.createElement("li");
+    item.innerHTML = '<a href="salvos.html" class="saved-menu-link"><span aria-hidden="true">♡</span> Salvos <b class="saved-menu-count">0</b></a>';
+    const inicio = menu.querySelector("li");
+    inicio?.after(item);
+  }
+  const hub = document.querySelector(".hub-nav");
+  if (hub && !hub.querySelector('a[href="salvos.html"]')) {
+    const link = document.createElement("a"); link.href = "salvos.html"; link.className = "saved-hub-link"; link.innerHTML = '♡ Salvos <span>0</span>'; hub.append(link);
+  }
+  atualizarContadoresSalvos();
+}
+
+function atualizarContadoresSalvos() {
+  const total = lerDados("acessaweb-favoritos", []).length;
+  document.querySelectorAll(".saved-menu-count,.saved-hub-link span").forEach((item) => item.textContent = total);
+}
+
+function criarFavoritosBiblioteca() {
+  document.querySelectorAll(".function-card[data-href]").forEach((cartao) => {
+    if (cartao.parentElement?.classList.contains("function-card-shell")) return;
+    const envoltorio = document.createElement("div");
+    envoltorio.className = "function-card-shell";
+    cartao.before(envoltorio); envoltorio.append(cartao);
+    const botao = document.createElement("span");
+    botao.className = "favorite-card"; botao.tabIndex = 0; botao.setAttribute("role", "button");
+    const atualizar = () => { const salvo = lerDados("acessaweb-favoritos", []).includes(cartao.dataset.href); botao.textContent = salvo ? "♥" : "♡"; botao.setAttribute("aria-pressed", String(salvo)); botao.setAttribute("aria-label", `${salvo ? "Remover" : "Salvar"} ${cartao.querySelector(".function-card__copy b").textContent}`); };
+    const alternar = (event) => { event.preventDefault(); event.stopPropagation(); alternarFavorito(cartao.dataset.href); atualizar(); atualizarContadoresSalvos(); };
+    botao.addEventListener("pointerdown", (event) => event.stopPropagation());
+    botao.addEventListener("click", alternar);
+    botao.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") alternar(event); });
+    envoltorio.append(botao); atualizar();
+  });
+}
+
 function salvarVisitaAtual() {
+  if (document.body.classList.contains("saved-page")) return;
   const pagina = document.querySelector(".sidebar a.active");
   if (!pagina || pagina.getAttribute("href") === "index.html") return;
   const recentes = lerDados("acessaweb-recentes", []);
@@ -380,7 +454,7 @@ function salvarVisitaAtual() {
 const conteudoPrincipal = document.querySelector("main.content");
 
 function criarContextoDoTopico() {
-  if (!conteudoPrincipal || document.body.classList.contains("home-page") || document.querySelector(".home") || document.querySelector(".page-context")) return;
+  if (!conteudoPrincipal || document.body.classList.contains("home-page") || document.body.classList.contains("saved-page") || document.querySelector(".home") || document.querySelector(".page-context")) return;
   const links = [...document.querySelectorAll(".sidebar a")];
   const atual = document.querySelector(".sidebar a.active");
   const indice = links.indexOf(atual);
@@ -391,18 +465,16 @@ function criarContextoDoTopico() {
   const favorito = document.createElement("button");
   favorito.type = "button";
   favorito.className = "favorite-topic";
-  favorito.textContent = "Adicionar aos favoritos";
+  favorito.textContent = "♡ Salvar função";
   const hrefAtual = atual?.getAttribute("href");
   const favoritos = lerDados("acessaweb-favoritos", []);
   favorito.setAttribute("aria-pressed", String(favoritos.includes(hrefAtual)));
-  if (favoritos.includes(hrefAtual)) favorito.textContent = "Nos favoritos";
+  if (favoritos.includes(hrefAtual)) favorito.textContent = "♥ Função salva";
   favorito.addEventListener("click", () => {
-    const lista = lerDados("acessaweb-favoritos", []);
-    const existe = lista.includes(hrefAtual);
-    const atualizada = existe ? lista.filter((item) => item !== hrefAtual) : [...lista, hrefAtual];
-    localStorage.setItem("acessaweb-favoritos", JSON.stringify(atualizada));
-    favorito.setAttribute("aria-pressed", String(!existe));
-    favorito.textContent = existe ? "Adicionar aos favoritos" : "Nos favoritos";
+    const salvo = alternarFavorito(hrefAtual);
+    favorito.setAttribute("aria-pressed", String(salvo));
+    favorito.textContent = salvo ? "♥ Função salva" : "♡ Salvar função";
+    atualizarContadoresSalvos();
   });
   contexto.append(favorito);
   conteudoPrincipal.prepend(contexto);
@@ -429,11 +501,31 @@ function preencherPainelPessoal() {
   }
 }
 
+function preencherPaginaSalvos() {
+  const grade = document.getElementById("salvos-grade");
+  if (!grade) return;
+  const resumo = document.getElementById("salvos-resumo");
+  const vazio = document.getElementById("salvos-vazio");
+  const renderizar = () => {
+    const favoritos = lerDados("acessaweb-favoritos", []);
+    const itens = favoritos.map((href) => catalogoTemas.find((tema) => tema[0] === href)).filter(Boolean);
+    resumo.textContent = `${itens.length} ${itens.length === 1 ? "função salva" : "funções salvas"}`;
+    vazio.hidden = itens.length > 0;
+    grade.innerHTML = itens.map(([href, titulo, foco, imagem]) => `<article class="saved-card"><img src="imagem/pexels/${imagem}" alt=""><div><small>${foco}</small><h2>${titulo}</h2><div class="saved-card__actions"><a href="${href}">Abrir função ↗</a><button type="button" data-remove-saved="${href}" aria-label="Remover ${titulo} dos salvos">Remover</button></div></div></article>`).join("");
+    grade.querySelectorAll("[data-remove-saved]").forEach((botao) => botao.addEventListener("click", () => { alternarFavorito(botao.dataset.removeSaved); renderizar(); atualizarContadoresSalvos(); }));
+  };
+  renderizar();
+  document.addEventListener("acessaweb:favoritos", renderizar);
+}
+
 lerDados("acessaweb-preferencias", []);
 lerDados("acessaweb-recentes", []);
+criarNavegacaoSalvos();
+criarFavoritosBiblioteca();
 salvarVisitaAtual();
 criarContextoDoTopico();
 preencherPainelPessoal();
+preencherPaginaSalvos();
 
 if (conteudoPrincipal && !document.querySelector(".skip-link")) {
   if (!conteudoPrincipal.id) conteudoPrincipal.id = "conteudo-principal";

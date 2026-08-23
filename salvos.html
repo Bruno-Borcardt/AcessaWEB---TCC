@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Funções de acessibilidade favoritas salvas no AcessaWEB.">
+  <title>Salvos | AcessaWEB</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="saved-page">
+  <button id="toggleSidebar" type="button">☰ <span>Menu</span></button>
+  <nav class="sidebar" aria-label="Menu principal"><ul><li><a href="index.html">Início</a></li><li><a href="salvos.html" class="active saved-menu-link"><span aria-hidden="true">♥</span> Salvos <b class="saved-menu-count">0</b></a></li></ul></nav>
+  <main class="saved-shell content" id="conteudo-principal">
+    <header class="saved-header">
+      <a class="saved-brand" href="index.html">AcessaWEB</a>
+      <nav aria-label="Navegação da página"><a href="index.html">Instituto</a><a href="index.html#funcoes">Funções</a><a href="salvos.html" aria-current="page">Salvos</a></nav>
+    </header>
+    <section class="saved-intro">
+      <div><small>SUA BIBLIOTECA</small><h1>Funções salvas.</h1></div>
+      <p class="saved-summary" id="salvos-resumo" aria-live="polite">0 funções salvas</p>
+    </section>
+    <section class="saved-grid" id="salvos-grade" aria-label="Funções favoritas"></section>
+    <section class="saved-empty" id="salvos-vazio">
+      <h2>Sua coleção começa na biblioteca.</h2>
+      <p>Use o coração nos cartões ou o botão “Salvar função” dentro de uma diretriz.</p>
+      <a href="index.html#funcoes">Explorar funções</a>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
