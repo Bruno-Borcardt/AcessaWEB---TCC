@@ -312,6 +312,20 @@ function criarInteracoesInicio() {
 
 criarInteracoesInicio();
 
+function aplicarImagensDaBiblioteca() {
+  const cartoes = [...document.querySelectorAll(".function-card[data-href]")];
+  cartoes.forEach((cartao, indice) => {
+    const imagem = cartao.querySelector("img");
+    if (!imagem) return;
+    const nomeArquivo = cartao.dataset.href.replace(/\.html(?:#.*)?$/, "");
+    imagem.src = `imagem/funcoes/${nomeArquivo}.png`;
+    imagem.loading = indice === 0 ? "eager" : "lazy";
+    imagem.decoding = "async";
+  });
+}
+
+aplicarImagensDaBiblioteca();
+
 function lerDados(chave, padrao) {
   try { return JSON.parse(localStorage.getItem(chave) || JSON.stringify(padrao)); } catch { return padrao; }
 }
@@ -328,7 +342,7 @@ function salvarVisitaAtual() {
 const conteudoPrincipal = document.querySelector("main.content");
 
 function criarContextoDoTopico() {
-  if (!conteudoPrincipal || document.querySelector(".home") || document.querySelector(".page-context")) return;
+  if (!conteudoPrincipal || document.body.classList.contains("home-page") || document.querySelector(".home") || document.querySelector(".page-context")) return;
   const links = [...document.querySelectorAll(".sidebar a")];
   const atual = document.querySelector(".sidebar a.active");
   const indice = links.indexOf(atual);
@@ -392,7 +406,7 @@ if (conteudoPrincipal && !document.querySelector(".skip-link")) {
   document.body.prepend(atalho);
 }
 
-if (conteudoPrincipal && !document.querySelector(".home") && !document.querySelector(".return-to-guide")) {
+if (conteudoPrincipal && !document.body.classList.contains("home-page") && !document.querySelector(".home") && !document.querySelector(".return-to-guide")) {
   const voltarAoGuia = document.createElement("a");
   voltarAoGuia.className = "return-to-guide";
   voltarAoGuia.href = "index.html";

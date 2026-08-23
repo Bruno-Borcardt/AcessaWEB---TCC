@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Analise páginas e códigos HTML com orientações acessíveis baseadas em WCAG e eMAG.">
+  <title>Analisar um site | AcessaWEB</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="analisar.css">
+</head>
+<body class="analyzer-page">
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
+  <header class="analyzer-header">
+    <a class="analyzer-brand" href="index.html" aria-label="AcessaWEB — página inicial">
+      <span class="analyzer-brand__mark" aria-hidden="true">AW</span>
+      <span><strong>AcessaWEB</strong><small>Laboratório de acessibilidade</small></span>
+    </a>
+    <nav aria-label="Navegação da ferramenta">
+      <a href="index.html">← Voltar ao instituto</a>
+      <a href="frameworks.html">Biblioteca técnica</a>
+    </nav>
+  </header>
+
+  <main id="conteudo-principal" class="analyzer-main">
+    <section class="analyzer-hero" aria-labelledby="titulo-analisador">
+      <div>
+        <p class="analyzer-kicker">FERRAMENTA 01 · AUDITORIA ORIENTADA</p>
+        <h1 id="titulo-analisador">Analisar um site</h1>
+        <p class="analyzer-lead">Encontre barreiras, compreenda quem elas afetam e receba orientações práticas para corrigi-las. A análise automática é um ponto de partida e não substitui testes com pessoas.</p>
+      </div>
+      <aside class="analyzer-principles" aria-label="Princípios da análise">
+        <span><b>WCAG 2.2</b>Critérios técnicos</span>
+        <span><b>eMAG 3.1</b>Contexto brasileiro</span>
+        <span><b>Humana</b>Impacto explicado</span>
+      </aside>
+    </section>
+
+    <section class="source-panel" aria-labelledby="titulo-fonte">
+      <div class="section-label"><span>01</span><div><h2 id="titulo-fonte">Escolha o conteúdo</h2><p>Use uma URL pública, cole o HTML ou selecione um arquivo local.</p></div></div>
+
+      <div class="source-tabs" role="tablist" aria-label="Origem do conteúdo">
+        <button type="button" role="tab" aria-selected="true" aria-controls="painel-url" id="aba-url" data-source-tab="url">URL do site</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="painel-html" id="aba-html" data-source-tab="html">Código HTML</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="painel-arquivo" id="aba-arquivo" data-source-tab="arquivo">Arquivo local</button>
+      </div>
+
+      <div class="source-content" id="painel-url" role="tabpanel" aria-labelledby="aba-url">
+        <label for="site-url">Endereço completo da página</label>
+        <div class="source-row"><input id="site-url" type="url" inputmode="url" placeholder="https://exemplo.org/pagina" autocomplete="url"><button type="button" class="analyzer-button primary-action" id="analisar-url">Analisar URL</button></div>
+        <p class="source-help">Alguns sites bloqueiam a leitura direta pelo navegador. Se isso acontecer, salve a página como HTML ou cole o código na segunda opção.</p>
+      </div>
+
+      <div class="source-content" id="painel-html" role="tabpanel" aria-labelledby="aba-html" hidden>
+        <label for="codigo-html">Código HTML da página</label>
+        <textarea id="codigo-html" rows="13" spellcheck="false" placeholder="<!doctype html>..."></textarea>
+        <div class="source-actions"><button type="button" class="analyzer-button primary-action" id="analisar-html">Analisar HTML</button><button type="button" class="analyzer-button secondary-action" id="carregar-exemplo">Carregar exemplo com barreiras</button><button type="button" class="text-action" id="limpar-html">Limpar</button></div>
+      </div>
+
+      <div class="source-content" id="painel-arquivo" role="tabpanel" aria-labelledby="aba-arquivo" hidden>
+        <label class="file-drop" for="arquivo-html"><span aria-hidden="true">⇧</span><b>Selecione um arquivo HTML</b><small>O arquivo é analisado somente neste navegador.</small></label>
+        <input id="arquivo-html" type="file" accept=".html,.htm,text/html">
+        <p class="file-name" id="nome-arquivo" aria-live="polite">Nenhum arquivo selecionado.</p>
+        <button type="button" class="analyzer-button primary-action" id="analisar-arquivo" disabled>Analisar arquivo</button>
+      </div>
+      <div class="analysis-message" id="mensagem-analise" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="results" id="resultados" aria-labelledby="titulo-resultados" hidden>
+      <div class="section-label"><span>02</span><div><h2 id="titulo-resultados">Resultado da análise</h2><p id="resumo-fonte">Relatório técnico e pedagógico da página.</p></div></div>
+
+      <div class="scoreboard">
+        <article class="score-card"><small>ÍNDICE AUTOMÁTICO</small><strong id="pontuacao">—</strong><span id="rotulo-pontuacao">Aguardando análise</span></article>
+        <article><small>ERROS</small><strong id="total-erros">0</strong><span>barreiras detectadas</span></article>
+        <article><small>ALERTAS</small><strong id="total-alertas">0</strong><span>revisões humanas</span></article>
+        <article><small>APROVAÇÕES</small><strong id="total-aprovacoes">0</strong><span>verificações atendidas</span></article>
+      </div>
+
+      <div class="results-toolbar">
+        <div class="result-filters" role="group" aria-label="Filtrar resultados">
+          <button type="button" aria-pressed="true" data-filter="all">Todos</button>
+          <button type="button" aria-pressed="false" data-filter="error">Erros</button>
+          <button type="button" aria-pressed="false" data-filter="warning">Alertas</button>
+          <button type="button" aria-pressed="false" data-filter="pass">Aprovações</button>
+        </div>
+        <div class="report-actions"><button type="button" class="text-action" id="exportar-json">Baixar JSON</button><button type="button" class="analyzer-button secondary-action" id="imprimir-relatorio">Gerar relatório</button></div>
+      </div>
+
+      <div class="results-layout">
+        <div class="findings" id="lista-resultados"></div>
+        <aside class="preview-panel" id="painel-previa" hidden>
+          <div><h3>Elemento analisado</h3><button type="button" class="text-action" id="fechar-previa" aria-label="Fechar prévia">Fechar</button></div>
+          <p>O elemento selecionado será destacado quando puder ser reproduzido com segurança.</p>
+          <iframe id="audit-preview" title="Prévia isolada do conteúdo analisado" sandbox="allow-same-origin"></iframe>
+        </aside>
+      </div>
+      <div class="results-disclaimer"><b>Importante:</b> aprovação automática não significa conformidade integral. Linguagem, pertinência do texto alternativo, facilidade de uso e experiência com tecnologias assistivas exigem avaliação humana.</div>
+    </section>
+  </main>
+  <script src="analisar.js"></script>
+</body>
+</html>
