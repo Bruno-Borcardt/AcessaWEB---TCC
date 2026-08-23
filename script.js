@@ -395,6 +395,33 @@ const catalogoTemas = [
   ["frameworks.html", "Frameworks", "Implementação", "pexels-pavel-danilyuk-7521282.jpg"]
 ];
 
+const conteudoEditorial = [
+  ["tipografia.html","AW-01","Pessoas idosas, com baixa visão e dislexia","Ler não pode ser um teste de resistência. Quando letras pequenas, linhas apertadas e baixo contraste impedem a compreensão, o projeto escolhe quem pode participar.","Permitir ampliação sem perda de conteúdo, usar hierarquia clara, largura de linha confortável e contraste suficiente.",["WCAG 2.2 — 1.4.3, 1.4.4 e 1.4.12","eMAG 3.1 — Apresentação e design","ABNT NBR 17225:2025 — conteúdo textual"]],
+  ["tempo.html","AW-02","Pessoas idosas, neurodivergentes e com limitações motoras","Pressa imposta pela interface é uma barreira fabricada. Ninguém deve perder um direito, uma compra ou um atendimento porque precisou de mais tempo.","Avisar sobre limites, permitir extensão, pausar sessões e preservar dados já preenchidos.",["WCAG 2.2 — 2.2.1 a 2.2.6","eMAG 3.1 — Comportamento","LBI — acesso à informação e aos serviços"]],
+  ["estresse.html","AW-03","Pessoas autistas, ansiosas, com TDAH ou comprometimento cognitivo","Interfaces agressivas, imprevisíveis e saturadas não são apenas incômodas: afastam pessoas. Clareza e calma também são condições de cidadania digital.","Reduzir interrupções, eliminar urgência artificial, antecipar etapas e oferecer saídas claras.",["WCAG 2.2 — 2.2.2, 2.3.3 e 3.2","eMAG 3.1 — Comportamento","WCAG 2.2 — orientação consistente"]],
+  ["erros.html","AW-04","Pessoas com dislexia, deficiência cognitiva, baixa escolaridade e idosos","Punir o erro do usuário é esconder o erro do projeto. Serviços inclusivos explicam, preservam o trabalho realizado e devolvem caminhos de correção.","Identificar o campo, explicar a solução em linguagem simples, validar antes do envio e permitir revisão.",["WCAG 2.2 — 3.3.1 a 3.3.8","eMAG 3.1 — Conteúdo e formulários","LBI — atendimento acessível"]],
+  ["seguranca.html","AW-05","Idosos, pessoas com deficiência cognitiva e novos usuários digitais","Segurança que ninguém compreende transfere o risco para quem já está vulnerável. Proteger é informar sem medo, jargão ou armadilhas.","Explicar permissões, confirmar ações críticas, mostrar destino de dados e oferecer recuperação acessível.",["WCAG 2.2 — 3.3.7 e 3.3.8","eMAG 3.1 — Formulários","LBI — proteção e autonomia"]],
+  ["responsivo.html","AW-06","Pessoas com baixa visão, mobilidade reduzida e acesso apenas por celular","Acesso não pode depender do tamanho da tela nem do preço do aparelho. Um conteúdo que some no zoom também exclui.","Reorganizar conteúdo sem rolagem em duas direções, preservar foco e garantir alvos de toque adequados.",["WCAG 2.2 — 1.4.10 e 2.5.8","eMAG 3.1 — Apresentação e design","ABNT NBR 17225:2025 — responsividade"]],
+  ["personalizacao.html","AW-07","Pessoas com baixa visão, dislexia, fotossensibilidade e neurodivergência","Não existe uma única forma correta de perceber e interagir. Dar escolha é reconhecer que autonomia não é privilégio.","Oferecer ajustes de fonte, contraste, espaçamento e movimento, mantendo preferências salvas.",["WCAG 2.2 — 1.4 e 2.3.3","eMAG 3.1 — Apresentação","LBI — desenho universal"]],
+  ["inteligencia.html","AW-08","Pessoas com deficiência que utilizam automação e tecnologia assistiva","IA não pode decidir quem merece ser compreendido. Automação inclusiva amplia capacidades, explica limites e mantém pessoas no controle.","Informar uso de IA, permitir revisão humana, evitar inferências discriminatórias e fornecer alternativa manual.",["WCAG 2.2 — 3.3.8 e 4.1.2","LBI — não discriminação","Princípios de transparência e supervisão humana"]],
+  ["leitura.html","AW-09","Pessoas com dislexia, deficiência intelectual, baixa escolaridade e idosos","Informação pública incompreensível é informação negada. Linguagem simples não empobrece ideias; amplia quem pode agir sobre elas.","Usar frases diretas, resumos, títulos descritivos, listas e explicação de termos técnicos.",["WCAG 2.2 — 3.1.3 a 3.1.5","eMAG 3.1 — Informação e conteúdo","LBI — comunicação acessível"]],
+  ["gestos.html","AW-10","Pessoas com tremores, paralisia, amputações ou baixa precisão motora","Nenhum gesto complexo deve funcionar como catraca digital. Toda ação precisa de uma alternativa simples e equivalente.","Substituir arrastar, pinçar e trajetórias por toque único, botões e controles de teclado.",["WCAG 2.2 — 2.5.1, 2.5.2 e 2.5.7","eMAG 3.1 — Comportamento","ABNT NBR 17225:2025 — entrada acessível"]],
+  ["notificacoes.html","AW-11","Pessoas surdas, cegas, com TDAH ou deficiência cognitiva","Um aviso percebido por apenas um sentido deixa parte do público para trás. Comunicação importante precisa chegar sem assustar nem desaparecer.","Combinar texto, ícone, som e anúncio por leitor de tela; permitir pausa e histórico.",["WCAG 2.2 — 1.3.1, 1.4.1 e 4.1.3","eMAG 3.1 — Comportamento","WCAG 2.2 — mensagens de status"]],
+  ["teclado.html","AW-12","Pessoas cegas e pessoas com limitações motoras","Se uma tarefa exige mouse, ela já fechou a porta para muita gente. Teclado não é atalho: é acesso integral.","Garantir ordem lógica, foco visível, ausência de armadilhas e acesso a todos os controles.",["WCAG 2.2 — 2.1.1, 2.1.2 e 2.4.7","eMAG 3.1 — Marcação e comportamento","ABNT NBR 17225:2025 — navegação"]],
+  ["pagamento.html","AW-13","Idosos, pessoas com deficiência cognitiva, visual ou motora","Comprar, pagar e movimentar recursos com autonomia é participação econômica. Barreiras nessa etapa transformam dependência em regra.","Resumir valores, identificar taxas, permitir revisão, salvar progresso e oferecer autenticação acessível.",["WCAG 2.2 — 3.3.4, 3.3.7 e 3.3.8","eMAG 3.1 — Formulários","LBI — igualdade de oportunidades"]],
+  ["usabilidade.html","AW-14","Pessoas com deficiência historicamente ausentes dos testes","Nada sobre acessibilidade deve ser validado sem pessoas com deficiência. Inclusão não se presume em laboratório: constrói-se com participação.","Recrutar perfis diversos, testar com tecnologias assistivas e registrar barreiras por impacto.",["WCAG 2.2 — critérios de conformidade","eMAG 3.1 — processo de avaliação","LBI — participação social"]],
+  ["servicos.html","AW-15","Pessoas com deficiência, idosos e cidadãos em vulnerabilidade social","Saúde, educação e cidadania não podem depender de habilidade tecnológica. Quando um serviço essencial exclui, o direito existe apenas no papel.","Priorizar tarefas essenciais, oferecer ajuda humana, linguagem simples e canais equivalentes.",["LBI — acesso a serviços e informação","eMAG 3.1 — governo eletrônico","WCAG 2.2 — nível AA"]],
+  ["experiencia.html","AW-16","Novos usuários, idosos e pessoas com baixa alfabetização digital","Experiência prévia não pode ser senha de entrada para a vida digital. Todo sistema deve ensinar sem humilhar e avançar sem abandonar.","Criar orientação inicial, exemplos, ajuda contextual e caminhos simples ou avançados.",["WCAG 2.2 — 3.2 e 3.3","eMAG 3.1 — Conteúdo","LBI — inclusão digital"]],
+  ["movimentos.html","AW-17","Pessoas com paralisia, artrite, tremores ou baixa coordenação","Corpos diferentes não são falhas de interação. Controles rígidos é que falham quando exigem uma precisão que milhões de pessoas não têm.","Aumentar áreas clicáveis, espaçar controles e evitar ações dependentes de força, tempo ou precisão.",["WCAG 2.2 — 2.5.5 e 2.5.8","eMAG 3.1 — Comportamento","ABNT NBR 17225:2025 — operação"]],
+  ["controle.html","AW-18","Pessoas neurodivergentes, com deficiência cognitiva ou sensorial","A interface deve obedecer à pessoa, não capturá-la. Reprodução automática, mudanças inesperadas e escolhas irreversíveis retiram autonomia.","Permitir pausar, desfazer, fechar, revisar e controlar qualquer conteúdo em movimento.",["WCAG 2.2 — 2.2.2, 3.2.1 e 3.2.2","eMAG 3.1 — Comportamento","LBI — autonomia"]],
+  ["auditivo.html","AW-19","Pessoas surdas, ensurdecidas e com deficiência auditiva","Conteúdo apenas em áudio silencia quem não pode ouvi-lo. Legenda, transcrição e Libras são meios de participação, não acessórios.","Fornecer legenda sincronizada, transcrição, identificação de falantes e controle de volume.",["WCAG 2.2 — 1.2.1 a 1.2.6","eMAG 3.1 — Multimídia","LBI — recursos de comunicação"]],
+  ["tecnologia.html","AW-20","Pessoas cegas, com baixa visão, surdas ou limitações motoras","Tecnologia assistiva é ponte para autonomia. Código incompatível transforma essa ponte em muro e força dependência onde deveria haver liberdade.","Usar HTML semântico, nomes acessíveis, estados programáticos e testes com leitores de tela.",["WCAG 2.2 — 1.3.1 e 4.1.2","eMAG 3.1 — Marcação","ABNT NBR 17225:2025 — interoperabilidade"]],
+  ["dispositivos.html","AW-21","Pessoas de baixa renda e moradores de regiões com conexão limitada","Inclusão digital não existe quando o serviço exige aparelho novo e internet rápida. Desempenho também é justiça social.","Reduzir peso, funcionar em conexões instáveis, evitar dependências excessivas e oferecer modo leve.",["LBI — inclusão digital","eMAG 3.1 — acesso universal","WCAG 2.2 — reflow e compatibilidade"]],
+  ["fraudes.html","AW-22","Idosos, pessoas com deficiência cognitiva e usuários pouco experientes","Fraudes exploram desigualdades de informação. Uma plataforma responsável previne manipulação e não culpa a vítima por ter confiado.","Sinalizar risco, confirmar destinatário, limitar urgência artificial e facilitar bloqueio e denúncia.",["WCAG 2.2 — 3.3.7 e 3.3.8","LBI — proteção da pessoa com deficiência","Boas práticas de segurança acessível"]],
+  ["social.html","AW-23","Pessoas com deficiência, idosos e grupos socialmente isolados","Participar da cultura e da vida pública é um direito. Plataformas que tornam pessoas invisíveis reproduzem exclusão fora da tela.","Criar perfis acessíveis, moderação inclusiva, descrição de mídia e ferramentas de comunidade seguras.",["LBI — participação na vida pública e cultural","WCAG 2.2 — 1.1.1 e 1.2","eMAG 3.1 — Conteúdo"]],
+  ["frameworks.html","AW-24","Equipes que precisam incorporar inclusão desde o primeiro componente","Acessibilidade não pode depender de heroísmo individual no fim do projeto. Ela precisa estar na infraestrutura, nos padrões e nas decisões de equipe.","Criar componentes semânticos, testes automatizados e manuais, documentação e critérios de aceite.",["WCAG 2.2 — conformidade AA","eMAG 3.1 — recomendações de implementação","ABNT NBR 17225:2025 — requisitos técnicos"]]
+];
+
 function alternarFavorito(href) {
   const favoritos = lerDados("acessaweb-favoritos", []);
   const existe = favoritos.includes(href);
@@ -455,18 +482,20 @@ const conteudoPrincipal = document.querySelector("main.content");
 
 function criarContextoDoTopico() {
   if (!conteudoPrincipal || document.body.classList.contains("home-page") || document.body.classList.contains("saved-page") || document.querySelector(".home") || document.querySelector(".page-context")) return;
-  const links = [...document.querySelectorAll(".sidebar a")];
   const atual = document.querySelector(".sidebar a.active");
-  const indice = links.indexOf(atual);
-  const proximo = links[indice + 1] || links[1];
+  const hrefAtual = atual?.getAttribute("href");
+  const indice = catalogoTemas.findIndex((tema) => tema[0] === hrefAtual);
+  const editorial = conteudoEditorial.find((tema) => tema[0] === hrefAtual);
+  if (!atual || indice < 0 || !editorial) return;
+  const anterior = catalogoTemas[(indice - 1 + catalogoTemas.length) % catalogoTemas.length];
+  const proximo = catalogoTemas[(indice + 1) % catalogoTemas.length];
   const contexto = document.createElement("div");
   contexto.className = "page-context";
-  contexto.innerHTML = `<span class="page-context__meta">Biblioteca de diretrizes · ${Math.max(1, indice)} de ${Math.max(1, links.length - 1)}</span>`;
+  contexto.innerHTML = `<nav class="topic-shortcuts" aria-label="Atalhos desta página"><a href="index.html">Início</a><a href="index.html#funcoes">24 funções</a><a href="index.html#normativas">Normativas</a><a href="salvos.html">Salvos</a></nav><span class="page-context__meta">${editorial[1]} · ${indice + 1} de ${catalogoTemas.length}</span>`;
   const favorito = document.createElement("button");
   favorito.type = "button";
   favorito.className = "favorite-topic";
   favorito.textContent = "♡ Salvar função";
-  const hrefAtual = atual?.getAttribute("href");
   const favoritos = lerDados("acessaweb-favoritos", []);
   favorito.setAttribute("aria-pressed", String(favoritos.includes(hrefAtual)));
   if (favoritos.includes(hrefAtual)) favorito.textContent = "♥ Função salva";
@@ -478,12 +507,56 @@ function criarContextoDoTopico() {
   });
   contexto.append(favorito);
   conteudoPrincipal.prepend(contexto);
-  if (proximo) {
-    const proximaEtapa = document.createElement("section");
-    proximaEtapa.className = "page-next";
-    proximaEtapa.innerHTML = `<div><small>PRÓXIMO TÓPICO</small><strong>${proximo.textContent.trim()}</strong></div><a href="${proximo.getAttribute("href")}">Continuar →</a>`;
-    conteudoPrincipal.append(proximaEtapa);
+
+  let secaoInicial = conteudoPrincipal.querySelector(":scope > .section");
+  if (!secaoInicial) {
+    const tituloSolto = conteudoPrincipal.querySelector(":scope > h1");
+    if (tituloSolto) {
+      secaoInicial = document.createElement("section");
+      tituloSolto.before(secaoInicial);
+      secaoInicial.append(tituloSolto);
+      const introducaoSolta = secaoInicial.nextElementSibling;
+      if (introducaoSolta?.tagName === "P") secaoInicial.append(introducaoSolta);
+    }
   }
+  const titulo = secaoInicial?.querySelector("h1")?.textContent.trim() || atual.textContent.trim();
+  const descricaoOriginal = secaoInicial?.querySelector("p")?.textContent.trim() || "";
+  const imagem = catalogoTemas[indice][3];
+  const citacoes = {
+    "leitura.html": ["A leitura do mundo precede a leitura da palavra.", "Paulo Freire"],
+    "tipografia.html": ["A leitura do mundo precede a leitura da palavra.", "Paulo Freire"],
+    "social.html": ["A sociedade sempre acaba vencendo, mesmo ante a inércia ou o antagonismo do Estado.", "Ulysses Guimarães"],
+    "servicos.html": ["A Constituição é caracteristicamente o estatuto do homem, da liberdade e da democracia.", "Ulysses Guimarães"]
+  };
+  const citacao = citacoes[hrefAtual];
+  if (secaoInicial) {
+    secaoInicial.className = "topic-hero";
+    secaoInicial.innerHTML = `<div class="topic-hero__copy"><span class="topic-code">${editorial[1]} · DIRETRIZ PRÁTICA</span><h1>${titulo}</h1><p class="topic-audience"><strong>Quem precisa estar no centro:</strong> ${editorial[2]}</p><p class="topic-manifesto">${editorial[3]}</p>${citacao ? `<blockquote>“${citacao[0]}”<cite>— ${citacao[1]}</cite></blockquote>` : ""}</div><figure><img src="imagem/pexels/${imagem}" alt="Imagem documental relacionada a ${titulo.toLowerCase()}"><figcaption>Inclusão em foco · ${editorial[2]}</figcaption></figure>`;
+  }
+
+  const pratica = document.createElement("section");
+  pratica.className = "topic-practice";
+  pratica.innerHTML = `<div><small>O AJUSTE NA PRÁTICA</small><h2>O que precisa mudar</h2><p>${editorial[4]}</p><p class="topic-original-note">${descricaoOriginal}</p></div><div class="topic-standards"><small>POR QUE É UMA EXIGÊNCIA</small><h2>Diretrizes relacionadas</h2><ul>${editorial[5].map((item) => `<li>${item}</li>`).join("")}</ul><a href="index.html#normativas">Consultar linha do tempo normativa →</a></div>`;
+  secaoInicial?.after(pratica);
+
+  const exemplo = conteudoPrincipal.querySelector(".example,.caixa-responsiva");
+  if (exemplo) {
+    exemplo.classList.add("topic-live-example");
+    const heading = exemplo.querySelector("h2");
+    if (heading) heading.insertAdjacentHTML("beforebegin", "<small>DEMONSTRAÇÃO INTERATIVA</small>");
+  }
+  const codigo = conteudoPrincipal.querySelector(".code-box");
+  if (codigo) {
+    codigo.classList.add("topic-code-example");
+    const heading = codigo.querySelector("h2");
+    if (heading) heading.textContent = `Código do item · ${editorial[1]}`;
+  }
+
+  const navegacao = document.createElement("nav");
+  navegacao.className = "topic-pagination";
+  navegacao.setAttribute("aria-label", "Troca entre funções");
+  navegacao.innerHTML = `<a href="${anterior[0]}"><small>← VOLTAR</small><strong>${anterior[1]}</strong></a><a href="index.html#funcoes" class="topic-pagination__all">Ver todas</a><a href="${proximo[0]}"><small>SEGUIR →</small><strong>${proximo[1]}</strong></a>`;
+  conteudoPrincipal.append(navegacao);
 }
 
 function preencherPainelPessoal() {
