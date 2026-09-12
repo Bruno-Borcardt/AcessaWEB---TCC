@@ -6,13 +6,17 @@
   <meta name="description" content="Funções de acessibilidade favoritas salvas no AcessaWEB.">
   <title>Salvos | AcessaWEB</title>
   <link rel="stylesheet" href="style.css">
+<link rel="icon" href="imagem/identidade/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="imagem/identidade/apple-touch-icon.png">
+<link rel="stylesheet" href="identidade.css">
 </head>
 <body class="saved-page">
   <button id="toggleSidebar" type="button">☰ <span>Menu</span></button>
-  <nav class="sidebar" aria-label="Menu principal"><ul><li><a href="index.html">Início</a></li><li><a href="salvos.html" class="active saved-menu-link"><span aria-hidden="true">♥</span> Salvos <b class="saved-menu-count">0</b></a></li></ul></nav>
+  <nav class="sidebar" aria-label="Menu principal">
+      <div class="sidebar-brand"><img class="site-logo" src="imagem/identidade/logo-acessaweb.png" width="800" height="278" alt="AcessaWEB"></div><ul><li><a href="index.html">Início</a></li><li><a href="salvos.html" class="active saved-menu-link"><span aria-hidden="true">♥</span> Salvos <b class="saved-menu-count">0</b></a></li></ul></nav>
   <main class="saved-shell content" id="conteudo-principal">
     <header class="saved-header">
-      <a class="saved-brand" href="index.html">AcessaWEB</a>
+      <a class="saved-brand" href="index.html" aria-label="AcessaWEB — página inicial"><img class="site-logo" src="imagem/identidade/logo-acessaweb.png" width="800" height="278" alt="AcessaWEB"></a>
       <nav aria-label="Navegação da página"><a href="index.html">Instituto</a><a href="index.html#funcoes">Funções</a><a href="salvos.html" aria-current="page">Salvos</a></nav>
     </header>
     <section class="saved-intro">

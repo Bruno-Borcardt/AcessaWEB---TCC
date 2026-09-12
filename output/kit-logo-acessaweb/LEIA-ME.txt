@@ -1,0 +1,26 @@
+ACESSAWEB — DIÁLOGO E CONHECIMENTO
+
+Conteúdo:
+- png: logo transparente em resolução original e larguras de 800 e 400 px.
+- jpg: logo com fundo branco, para documentos e apresentações.
+- webp: logo transparente, para uso na web.
+- icones: símbolo isolado em PNG, favicon ICO e Apple Touch Icon.
+- originais: apresentação escolhida e logo preparada a partir dela.
+- index.html e logo.css: exemplo responsivo, pronto para abrir no navegador.
+
+Uso no site:
+Copie as pastas png e icones para seu projeto e ajuste os caminhos:
+<a href="index.html"><img src="png/acessaweb-logo-800.png" alt="AcessaWEB" style="width:260px;max-width:100%;height:auto"></a>
+<link rel="icon" href="icones/favicon.ico">
+
+Use a versão colorida em fundos claros. Preserve a proporção; não estique a imagem.
+PNG e WebP preservam transparência; JPG não suporta transparência.
+HTML é uma demonstração de integração, não um formato de imagem.
+
+Origem e limitações:
+Conceito escolhido: livro aberto e diálogo, associado à educação e à colaboração.
+Logo preparada pela ferramenta integrada de geração de imagens a partir da referência escolhida. Podem existir pequenas diferenças em relação à apresentação original, preservada na pasta originais.
+Arquivos são rasterizados. Não há vetor editável SVG, AI ou EPS neste pacote; a vetorização exige uma etapa própria. Não ampliar acima da resolução original para impressão de grande formato.
+
+Prompt utilizado na preparação:
+Extract only the LARGE main horizontal logo from this reference: purple/black open book dialogue symbol followed by exact wordmark AcessaWEB. Preserve logo design and typography as faithfully as possible. Remove the top heading and all bottom small examples. Output a single clean horizontal logo, centered tightly with modest clear padding, on genuinely transparent alpha background. Flat purple and black artwork. No new text, no glow, shadows or decoration. This is a production logo asset for website header.
