@@ -4,11 +4,8 @@ import shutil
 import zipfile
 
 root = Path(__file__).parent / 'kit-logo-acessaweb'
-source = Path('C:/Users/Bruno/.codex/generated_images/01a06993-7848-73f2-9f3d-8675ab739d3b')
 for folder in ('png', 'jpg', 'webp', 'icones', 'originais'):
     (root / folder).mkdir(parents=True, exist_ok=True)
-shutil.copy2(source / 'exec-13fec613-d659-4c0a-90c7-6cf977ebc369.png', root / 'originais/apresentacao-original.png')
-shutil.copy2(source / 'exec-66c8b889-f1c3-45b6-8d0a-59cc8da228ab.png', root / 'originais/logo-preparada.png')
 logo = Image.open(root / 'originais/logo-preparada.png').convert('RGBA')
 assert logo.getchannel('A').getextrema()[0] == 0, 'Transparência ausente'
 logo.save(root / 'png/acessaweb-logo.png')
@@ -29,6 +26,9 @@ icon.save(root / 'icones/favicon.ico', sizes=[(16,16),(32,32),(48,48),(64,64),(1
 apple = Image.new('RGB', icon.size, 'white')
 apple.paste(icon, mask=icon.getchannel('A'))
 apple.resize((180,180), Image.Resampling.LANCZOS).save(root / 'icones/apple-touch-icon.png')
+site = root.parent.parent / 'imagem/identidade'
+for asset, name in [('png/acessaweb-logo-800.png', 'logo-acessaweb.png'), ('icones/favicon.ico', 'favicon.ico'), ('icones/apple-touch-icon.png', 'apple-touch-icon.png')]:
+    shutil.copy2(root / asset, site / name)
 for file in root.rglob('*'):
     if file.suffix in ('.png','.jpg','.webp','.ico'):
         with Image.open(file) as check:

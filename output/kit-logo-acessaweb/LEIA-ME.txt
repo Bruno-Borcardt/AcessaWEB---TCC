@@ -22,5 +22,5 @@ Conceito escolhido: livro aberto e diálogo, associado à educação e à colabo
 Logo preparada pela ferramenta integrada de geração de imagens a partir da referência escolhida. Podem existir pequenas diferenças em relação à apresentação original, preservada na pasta originais.
 Arquivos são rasterizados. Não há vetor editável SVG, AI ou EPS neste pacote; a vetorização exige uma etapa própria. Não ampliar acima da resolução original para impressão de grande formato.
 
-Prompt utilizado na preparação:
-Extract only the LARGE main horizontal logo from this reference: purple/black open book dialogue symbol followed by exact wordmark AcessaWEB. Preserve logo design and typography as faithfully as possible. Remove the top heading and all bottom small examples. Output a single clean horizontal logo, centered tightly with modest clear padding, on genuinely transparent alpha background. Flat purple and black artwork. No new text, no glow, shadows or decoration. This is a production logo asset for website header.
+Paleta atual: verde-musgo e preto. A apresentação original em roxo é uma referência histórica.
+Instrução usada na edição de imagem: substituir o roxo da página esquerda do livro e das letras WEB pelo verde-musgo de referência #35562E, preservando as partes pretas, a tipografia e o fundo transparente.
